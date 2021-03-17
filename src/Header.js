@@ -9,7 +9,7 @@ function Header() {
       <img
         className="header__logo"
         src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
-      ></img>
+      alt="record-store"/>
 
       <div className="header__search">
         <input className="header__searchInput" type="text" />
