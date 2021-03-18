@@ -3,20 +3,21 @@ export const initialState = {
 };
 
 // reducer dispatches action to data layer
-// global store similiar to Contextprovider 
-// reducer listens to actions exa. clicking on add basket and remove from basket 
+// global store similiar to Contextprovider
+// reducer listens to actions exa. clicking on add basket and remove from basket
+// spread operator pushes the action.item into the empty basket array
 
 export const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
       return {
         ...state,
         basket: [...state.basket, action.item],
       };
-      default:
-          return state;
+    default:
+      return state;
   }
 };
 
-
-export default reducer; 
+export default reducer;
