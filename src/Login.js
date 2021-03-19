@@ -6,6 +6,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const signIn = (e) => {
+    //   prevent the page from refreshing
+    // console.log(email)
+    e.preventDefault();
+  };
+
+  const register = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="login">
       <Link to="/">
@@ -31,14 +41,20 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="login__signInButton">Sign in</button>
+          <button
+            type="submit"
+            onClick={signIn}
+            className="login__signInButton"
+          >
+            Sign in
+          </button>
         </form>
         <p>
           By signing-in you agree to discM8's Conditions of Use & Sale. Please
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
         </p>
 
-        <button className="login__signUpButton">
+        <button onClick={register} className="login__signUpButton">
           Create your discM8 account
         </button>
       </div>
