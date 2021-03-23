@@ -29,17 +29,19 @@ function Login() {
         <h1>Sign in </h1>
 
         <form>
-          <h5>E-mail</h5>
+          {/* <h5>E-mail</h5> */}
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
-          <h5>Password</h5>
+          {/* <h5>Password</h5> */}
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
           />
           <button
             type="submit"

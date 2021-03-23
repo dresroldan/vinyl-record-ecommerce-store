@@ -4,6 +4,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import TextField from '@material-ui/core/TextField';
 
 function Header() {
   const [{ basket }, dispatch] = useStateValue();
@@ -13,14 +15,17 @@ function Header() {
       <Link to="/">
         <img
           className="header__logo"
-          src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
+          src="https://www.pngitem.com/pimgs/m/260-2609838_vinyl-png-transparent-image-transparent-background-vinyl-record.png"
           alt="record-store"
         />
+
+
       </Link>
 
       <div className="header__search">
-        <input className="header__searchInput" type="text" />
+        <input className="header__searchInput" type="text" placeholder="Search artists, albums, and more..."/>
         <SearchIcon className="header__searchIcon" />
+        {/* <TextField  variant="outlined" className="header__searchInput" type="text" label="Search artists, albums, and more..."/> */}
       </div>
 
       <div className="header__nav">
