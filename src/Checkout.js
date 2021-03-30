@@ -3,6 +3,7 @@ import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
+import data from "./data.js"
 
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
@@ -11,8 +12,8 @@ function Checkout() {
       <div className="checkout__left">
         <img
           className="checkout__ad"
-          src="https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png"
-          alt=""
+          src={data.checkoutImage}
+          alt="record-store-ad"
         />
 
         <div>
