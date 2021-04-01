@@ -1,67 +1,19 @@
-.header {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  background-color:white;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header__logo {
-  width: 100px;
-  object-fit: contain;
-  margin: 0 20px 20px;
-  margin-top: 18px;
-}
-
-.header__search {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  border-radius: 24px;
-
-}
-
-.header__searchInput {
-  height: 12px;
-  padding: 10px;
-  border: 1px solid black;
-  width: 300px;
-  outline: none;
+.MuiToolbar-regular {
+  justify-content: space-between;
 }
 
 .header__optionLineOne {
-  font-size: 10px;
-}
-
-.header__optionLineTwo {
   font-size: 13px;
-  /* font-weight: 800; */
-}
-
-.header__searchIcon {
-  padding: 5px;
-  height: 22px !important;
-  background-color: black;
 }
 
 .header__optionBasket {
-  display: flex;
-  align-items: center;
-  color: black;
-}
-
-.header__basketCount {
-margin-left: 10px;
-margin-right: 10px;
-color: black;
-text-decoration: none;
+  color: #222222;
 }
 
 .header__nav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .header__option {
@@ -69,29 +21,25 @@ text-decoration: none;
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
-  color: black;
+  color: #222222;
 }
 
-.header__nav > a{
-
-text-decoration: none;
-
+.header__nav > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
-
-
-.header__optionLineTwo:hover{
-  color:lightgray;
-  transition: all .2s ease-in-out;
+.header__optionLineOne:hover {
+  color: lightgray;
+  transition: all 0.2s ease-in-out;
 }
 
-
-.MuiSvgIcon-root{
-color: black;
-
+.MuiSvgIcon-root {
+  color: #222222;
 }
 
-.MuiSvgIcon-root:hover{
-  color:lightgray;
-  transition: all .2s ease-in-out;
-  }
+.MuiSvgIcon-root:hover {
+  color: lightgray;
+
+}
