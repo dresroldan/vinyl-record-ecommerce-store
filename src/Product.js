@@ -35,9 +35,9 @@ function Product({ id, title, image, price, rating }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
+      <button onClick={addToBasket}>Add to cart</button>
       </div>
 
-      <button onClick={addToBasket}>Add to Basket</button>
     </div>
   );
 }

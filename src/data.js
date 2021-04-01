@@ -57,6 +57,22 @@ const data = {
         "https://i1.sndcdn.com/artworks-98c8BLUm7CIz7vxF-DSWXgQ-t500x500.jpg",
       rating: 5,
     },
+    {
+      id: "2563784",
+      title: "Mar de Luz - All On U (12)",
+      price: 19.99,
+      image:
+        "https://i1.sndcdn.com/artworks-98c8BLUm7CIz7vxF-DSWXgQ-t500x500.jpg",
+      rating: 5,
+    },
+    {
+      id: "2563784",
+      title: "Mar de Luz - All On U (12)",
+      price: 19.99,
+      image:
+        "https://i1.sndcdn.com/artworks-98c8BLUm7CIz7vxF-DSWXgQ-t500x500.jpg",
+      rating: 5,
+    },
   ],
 
   // CHECKOUT PAGE DATA //

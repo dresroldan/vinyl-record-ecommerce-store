@@ -47,11 +47,11 @@ margin-right: 5px;
 .home__image{
 width: 100%;
 
-
+;
 }
 
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 500px){
 
     .home__product{
         display: grid;
