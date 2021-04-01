@@ -10,35 +10,33 @@ function Header() {
   const [{ basket }, dispatch] = useStateValue();
 
   return (
-    <div className="header">
-      <AppBar color="inherit">
-        <Toolbar>
-          <Link to="/">
-            <AlbumIcon className="header__logo" fontSize="large" />
+    <AppBar elevation="none" color="inherit">
+      <Toolbar>
+        <Link to="/">
+          <AlbumIcon className="header__logo" fontSize="large" />
+        </Link>
+
+        <div className="header__nav">
+          <Link to="/login">
+            <div className="header__option">
+              <span className="header__optionLineOne">SIGN IN</span>
+            </div>
           </Link>
 
-          <div className="header__nav">
-            <Link to="/login">
-              <div className="header__option">
-                <span className="header__optionLineOne">SIGN IN</span>
-              </div>
-            </Link>
-
-            <Link to="/checkout">
-              <IconButton aria-label="Show cart items" color="inherit">
-                <Badge
-                  badgeContent={basket?.length}
-                  fontSize="small"
-                  color="secondary"
-                >
-                  <ShoppingCartSharpIcon fontSize="small" />
-                </Badge>
-              </IconButton>
-            </Link>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+          <Link to="/checkout">
+            <IconButton aria-label="Show cart items" color="inherit">
+              <Badge
+                badgeContent={basket?.length}
+                fontSize="small"
+                color="secondary"
+              >
+                <ShoppingCartSharpIcon fontSize="small" />
+              </Badge>
+            </IconButton>
+          </Link>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 }
 
