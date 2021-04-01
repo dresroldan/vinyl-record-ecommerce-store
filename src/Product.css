@@ -27,10 +27,13 @@ display: flex;
 }
 
 .product > button {
-  background: slategray;
+  background: #d8d8da;
   border: 1px solid;
-  color: white;
-  border-color: black;
+  color: black;
+  border-color: none
+  ;
+  outline: none;
+  font-size: 13px;
 }
 
 .product__price {
