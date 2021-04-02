@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/vinyl-record-ecommerce-store/static/css/main.6e542583.chunk.css",
+    "main.js": "/vinyl-record-ecommerce-store/static/js/main.b9808b7c.chunk.js",
+    "main.js.map": "/vinyl-record-ecommerce-store/static/js/main.b9808b7c.chunk.js.map",
+    "runtime-main.js": "/vinyl-record-ecommerce-store/static/js/runtime-main.a7941e38.js",
+    "runtime-main.js.map": "/vinyl-record-ecommerce-store/static/js/runtime-main.a7941e38.js.map",
+    "static/js/2.b0dcaa42.chunk.js": "/vinyl-record-ecommerce-store/static/js/2.b0dcaa42.chunk.js",
+    "static/js/2.b0dcaa42.chunk.js.map": "/vinyl-record-ecommerce-store/static/js/2.b0dcaa42.chunk.js.map",
+    "static/js/3.f58a6ad2.chunk.js": "/vinyl-record-ecommerce-store/static/js/3.f58a6ad2.chunk.js",
+    "static/js/3.f58a6ad2.chunk.js.map": "/vinyl-record-ecommerce-store/static/js/3.f58a6ad2.chunk.js.map",
+    "index.html": "/vinyl-record-ecommerce-store/index.html",
+    "static/css/main.6e542583.chunk.css.map": "/vinyl-record-ecommerce-store/static/css/main.6e542583.chunk.css.map",
+    "static/js/2.b0dcaa42.chunk.js.LICENSE.txt": "/vinyl-record-ecommerce-store/static/js/2.b0dcaa42.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a7941e38.js",
+    "static/js/2.b0dcaa42.chunk.js",
+    "static/css/main.6e542583.chunk.css",
+    "static/js/main.b9808b7c.chunk.js"
+  ]
+}
