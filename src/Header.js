@@ -10,7 +10,7 @@ function Header() {
   const [{ basket }, dispatch] = useStateValue();
 
   return (
-    <AppBar position="sticky" elevation="none" color="inherit">
+    <AppBar position="sticky"  color="inherit">
       <Toolbar>
         <Link to="/">
           <AlbumIcon className="header__logo" fontSize="large" />

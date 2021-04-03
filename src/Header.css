@@ -10,7 +10,7 @@
 }
 
 .header__optionBasket {
-  color: #222222;
+  color: black;
 }
 
 .header__nav {
@@ -24,7 +24,7 @@
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
-  color: #222222;
+  color: black;
 }
 
 .header__nav > a {
@@ -39,7 +39,7 @@
 }
 
 .MuiSvgIcon-root {
-  color: #222222;
+  color: black;
 }
 
 .MuiSvgIcon-root:hover {

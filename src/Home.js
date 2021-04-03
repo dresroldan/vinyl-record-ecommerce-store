@@ -2,7 +2,6 @@ import React from "react";
 import "./Home.css";
 import Product from "./Product";
 import data from "./data.js";
-
 function Home() {
   return (
     <div className="home">
@@ -27,7 +26,6 @@ function Home() {
                 rating={product.rating}
               />
             ))}
-            ;
           </div>
         </div>
       </div>

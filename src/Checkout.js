@@ -9,15 +9,15 @@ function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="checkout">
-      <div className="checkout__left">
         <img
           className="checkout__ad"
           src={data.checkoutImage}
           alt="record-store-ad"
         />
+          <h2 className="checkout__title">Your selection</h2>
+      <div className="checkout__left">
 
         <div>
-          <h2 className="checkout__title">Your shopping basket</h2>
 
           {/* passing product props to display item content in checkout basket */}
           {/* when adding item to basket this map array method creates a new array and will display onto checkout page*/}
@@ -28,14 +28,15 @@ function Checkout() {
               title={item.title}
               image={item.image}
               price={item.price}
-              rating={item.rating}
+              
             />
           ))}
         </div>
+        <Subtotal />
       </div>
 
       <div className="checkout__right">
-        <Subtotal />
+       
       </div>
     </div>
   );

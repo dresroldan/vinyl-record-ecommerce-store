@@ -26,10 +26,19 @@
   border-color: none;
   outline: none;
   font-size: 12px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 7px 20px 7px;
   cursor: pointer;
 }
+
+.product__info > button:hover{
+
+  color: #d8d8da;
+  background: black;
+  transition: all 0.2s ease-in-out;
+}
+
+
 
 .product__price {
   margin-top: 5px;
@@ -41,5 +50,4 @@
   text-align: left;
   width: 100%;
   /* padding-left: 10px; */
-   
 }

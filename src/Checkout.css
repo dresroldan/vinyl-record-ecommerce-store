@@ -1,22 +1,39 @@
-.checkout{
-    display:flex;
-    padding:20px;
-    background-color: white;
-    height: max-content;
-    }
-    
-    
-    .checkout__ad{
-    width: 100%;
-    margin-bottom: 10px;
-    
-    }
-    
-    
-    .checkout__title{
-    margin-right: 10px;
-    padding:10px;
-    border-bottom: 1px solid lightgray;
-    
-    
-    }
+.checkout {
+  display: flex;
+
+  background-color: white;
+  height: max-content;
+  flex-direction: column;
+}
+
+.checkout__ad {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.checkout__title {
+  margin-right: 10px;
+  padding: 10px;
+  
+  font-size: 25px;
+}
+
+.checkout__left{
+
+padding:30px ;
+display: flex;
+flex-direction: column;
+}
+
+.checkout__right {
+  align-self: center;
+
+ 
+}
+
+
+@media only screen and (min-width: 900px) {
+  .checkout__left {
+    flex-direction: row;
+  }
+}
