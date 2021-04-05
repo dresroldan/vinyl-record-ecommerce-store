@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
-  const signIn = (e) => {
-    //   prevent the page from refreshing
-    // console.log(email)
-    e.preventDefault();
-  };
-
-  const register = (e) => {
-    e.preventDefault();
+  const login = () => {
+    axios({
+      method: "GET",
+      data: {
+        username: loginEmail,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/login",
+    }).then((res) => console.log(res));
   };
 
   return (
@@ -32,22 +35,18 @@ function Login() {
           {/* <h5>E-mail</h5> */}
           <input
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            // value={email}
+            onChange={(e) => setLoginEmail(e.target.value)}
             placeholder="Email"
           />
           {/* <h5>Password</h5> */}
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            // value={password}
+            onChange={(e) => setLoginPassword(e.target.value)}
             placeholder="Password"
           />
-          <button
-            type="submit"
-            onClick={signIn}
-            className="login__signInButton"
-          >
+          <button type="submit" onClick={login} className="login__signInButton">
             Sign in
           </button>
         </form>
@@ -56,9 +55,13 @@ function Login() {
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
         </p>
 
-        <button onClick={register} className="login__signUpButton">
+        {/* <button onClick={register} className="login__signUpButton">
           Create your discM8 account
-        </button>
+        </button> */}
+
+        <Link to="/signup" className="login__signUpButton">
+          Create your discM8 account
+        </Link>
       </div>
     </div>
   );

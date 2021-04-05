@@ -3,6 +3,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Checkout from "./Checkout";
 import Login from "./Login";
+import Signup from "./Signup";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductPage from "./ProductPage";
 
@@ -12,8 +13,12 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-
           {/* login route */}
+
+          <Route path="/signup">
+            <Signup />
+          </Route>
+
           <Route path="/login">
             <Login />
           </Route>
@@ -28,7 +33,6 @@ function App() {
             <Header />
             <ProductPage />
           </Route>
-
 
           {/* home page route */}
           <Route path="/">
