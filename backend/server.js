@@ -4,7 +4,7 @@ const cors = require("cors");
 const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
-const bycrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const session = require("express-session");
 require("dotenv").config();
 // const user = require("./routes/user");
@@ -43,9 +43,11 @@ app.post("/signup", (req, res) => {
     if (err) throw err;
     if (doc) res.send("User already Exists");
     if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
       const newUser = new User({
         username: req.body.username,
-        password: req.body.password,
+        password: hashedPassword,
       });
       await newUser.save();
       res.send("user created");
