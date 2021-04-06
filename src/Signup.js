@@ -7,8 +7,9 @@ function Signup() {
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
 
-  const signup = () => {
-    // e.preventDefault();
+  const signup = (e) => {
+    e.preventDefault();
+
     axios({
       method: "POST",
       data: {

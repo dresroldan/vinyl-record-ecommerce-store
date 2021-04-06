@@ -7,9 +7,10 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
     axios({
-      method: "GET",
+      method: "POST",
       data: {
         username: loginEmail,
         password: loginPassword,

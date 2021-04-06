@@ -6,24 +6,39 @@ const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
-require("dotenv").config();
-// const user = require("./routes/user");
 const User = require("./models/user");
+require("dotenv").config();
 
-// creates express server
+// ------------------------------------- END OF IMPORTS ------------------------------------------- //
+
+// CREATES EXPRESS SERVER
 const app = express();
 const port = process.env.PORT || 5000;
 
-// middleware
+// MONGO CONNECTION STRING
+const uri = process.env.MONGODB_URI;
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("Connected to Mongo");
+  })
+  .catch((err) => console.log({ err }));
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // location of the react app were connecting to
+    origin: "http://localhost:3000", // LOCATION OF THE REACT APP WE'RE CONNNECTING TO
     credentials: true,
   })
 );
-// parses JSON
+
+// PARSES JSON
 app.use(express.json());
-// express session
+// EXPRESS SESSION
 app.use(
   session({
     secret: "secretcode",
@@ -33,9 +48,43 @@ app.use(
 );
 
 app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
+// ------------------------------------- END OF MIDDLEWARE ------------------------------------------- //
+
+// ROUTES
+
+// app.post(
+//   '/login',
+//   function (req, res, next) {
+//     // console.log('routes/user.js, login, req.body: ');
+//     // console.log(req.body);
+//     next();
+//   },
+//   passport.authenticate('local'),
+//   (req, res) => {
+//     // console.log('logged in', req.user);
+//     var userInfo = {
+//       username: req.user.username,
+//     };
+//     res.send(userInfo);
+//   }
+// );
+
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists ");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+        console.log(req.user);
+      });
+    }
+  })(req, res, next);
 });
 
 app.post("/signup", (req, res) => {
@@ -50,52 +99,18 @@ app.post("/signup", (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("user created");
+      res.send("User Created");
     }
   });
 });
 
-app.post("/user", (req, res) => {});
-
-const uri = process.env.MONGODB_URI;
-
-mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log("Connected to Mongo");
-  })
-  .catch((err) => console.log({ err }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// calls the deserializeUser
-
-// Routes
-// app.use(user);
-
-// Importing the routes
-// app.use(require("./routes"));
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "client/build")));
-//   //
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join((__dirname = "client/build/index.html")));
-//   });
-// }
-
-// // build mode
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/client/public/index.html"));
+// app.post("/user", (req, res) => {
+//   res.send(req.user);
+// The req.user stores the entire user that has been authenticated inside of it
 // });
 
-// starts the server
+// ------------------------------------- END OF ROUTES ------------------------------------------- //
+
 app.listen(port, () => {
   console.log(`server is running on port: ${port}`);
 });
