@@ -18,9 +18,10 @@ function Header() {
         withCredentials: true,
       })
       .then((res) => {
-       if (res.data === "success"){
-         window.location.href = "/";
-       }
+        if (res.data === "success") {
+          window.location.href = "/";
+          console.log("successfully logged out!");
+        }
       });
   };
 

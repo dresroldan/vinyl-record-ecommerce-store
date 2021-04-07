@@ -1,12 +1,17 @@
 import React from "react";
 import "./CheckoutProduct.css";
 import { useStateValue } from "./StateProvider";
-import { removeFromBasket } from "./reducer";
+// import { removeFromBasket } from "./reducer";
 
 function CheckoutProduct({ id, image, title, price, rating }) {
   // basket contains our selected product items
   // dispatch is our action -- add/remove
-  const [{ basket }, dispatch] = useStateValue();
+  const [
+    ,
+    // { basket }
+
+    dispatch,
+  ] = useStateValue();
 
   // this function removes our selected item/s from the basket
   const removeFromBasket = () => {

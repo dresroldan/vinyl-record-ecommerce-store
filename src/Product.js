@@ -8,7 +8,12 @@ import { useStateValue } from "./StateProvider";
 // props allows reusability and efficiency in components.
 
 function Product({ id, title, image, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
+  const [
+    ,
+    // { basket }
+
+    dispatch,
+  ] = useStateValue();
 
   // console.log("this is the basket >>>", basket);
 
@@ -35,9 +40,8 @@ function Product({ id, title, image, price, rating }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
-      <button onClick={addToBasket}>Add to cart</button>
+        <button onClick={addToBasket}>Add to cart</button>
       </div>
-
     </div>
   );
 }

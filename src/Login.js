@@ -18,7 +18,13 @@ function Login() {
       },
       withCredentials: true,
       url: "http://localhost:5000/login",
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      if (res.data === "success") {
+        window.location.href = "/";
+      }
+
+      console.log("successfully logged in!");
+    });
   };
 
   const getUser = (e) => {

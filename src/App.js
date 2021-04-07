@@ -4,7 +4,7 @@ import Home from "./Home";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import Signup from "./Signup";
-import { BrowserRouter, Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Context from "./Context";
 
 function App() {
