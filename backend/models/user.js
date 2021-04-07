@@ -5,32 +5,13 @@ const Schema = mongoose.Schema;
 
 // Define userSchema
 const user = new Schema({
-  username: { type: String, unique: false, required: false },
-  password: { type: String, unique: false, required: false },
+  username: { type: String, unique: true, required: false },
+  password: String,
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
-
-// Define schema methods
-// user.methods = {
-// 	checkPassword: function (inputPassword) {
-// 		return bcrypt.compareSync(inputPassword, this.password)
-// 	},
-// 	hashPassword: plainTextPassword => {
-// 		return bcrypt.hashSync(plainTextPassword, 10)
-// 	}
-// }
-
-// Define hooks for pre-saving
-// user.pre('save', function (next) {
-// 	if (!this.password) {
-// console.log('models/user.js =======NO PASSWORD PROVIDED=======')
-// 	next()
-// } else {
-// console.log('models/user.js hashPassword in pre save');
-
-// 		this.password = this.hashPassword(this.password)
-// 		next()
-// 	}
-// })
 
 const User = mongoose.model("User", user);
 module.exports = User;

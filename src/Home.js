@@ -1,8 +1,15 @@
-import React from "react";
+import React , {useContext} from "react";
 import "./Home.css";
 import Product from "./Product";
 import data from "./data.js";
+import { myContext } from "./Context";
+
+
+
 function Home() {
+  const ctx = useContext(myContext);
+  console.log(ctx);
+
   return (
     <div className="home">
       <div className="home__container">

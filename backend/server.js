@@ -56,23 +56,6 @@ require("./passportConfig")(passport);
 
 // ROUTES
 
-// app.post(
-//   '/login',
-//   function (req, res, next) {
-//     // console.log('routes/user.js, login, req.body: ');
-//     // console.log(req.body);
-//     next();
-//   },
-//   passport.authenticate('local'),
-//   (req, res) => {
-//     // console.log('logged in', req.user);
-//     var userInfo = {
-//       username: req.user.username,
-//     };
-//     res.send(userInfo);
-//   }
-// );
-
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;

@@ -39,6 +39,7 @@ function Login() {
         <img
           className="login__logo"
           src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
+          alt="vinylrecord-logo"
         />
       </Link>
 

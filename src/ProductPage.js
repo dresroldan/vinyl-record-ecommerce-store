@@ -1,9 +1,9 @@
-import React from "react";
-import data from "./data";
-// import Product from "./Product";
-import "./ProductPage.css";
+// import React from "react";
+// import data from "./data";
+// // import Product from "./Product";
+// import "./ProductPage.css";
 
-function ProductPage(props) {
+// function ProductPage(props) {
   // const product = data.products.find((x) => x._id === props.match.params.id);
  
  
@@ -11,15 +11,15 @@ function ProductPage(props) {
   //   return <div>Product not found</div>;
   // }
 
-  return (
-    <div className="productPage">
-      <div classname="productPage__left">
+//   return (
+//     <div className="productPage">
+//       <div classname="productPage__left">
 
-      </div>
+//       </div>
 
-      <div className="productPage__right"></div>
-    </div>
-  );
-}
+//       <div className="productPage__right"></div>
+//     </div>
+//   );
+// }
 
-export default ProductPage;
+// export default ProductPage;

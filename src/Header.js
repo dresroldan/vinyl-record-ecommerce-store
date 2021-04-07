@@ -7,7 +7,10 @@ import ShoppingCartSharpIcon from "@material-ui/icons/ShoppingCartSharp";
 import "./Header.css";
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket }, ] = useStateValue();
+
+  // const ctx = useContext(myContext);
+
 
   return (
     <AppBar position="sticky"  color="inherit">
