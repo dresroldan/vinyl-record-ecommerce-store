@@ -6,10 +6,23 @@ import { AppBar, Toolbar, Badge, IconButton } from "@material-ui/core/";
 import ShoppingCartSharpIcon from "@material-ui/icons/ShoppingCartSharp";
 import "./Header.css";
 import { myContext } from "./Context";
+import axios from "axios";
 
 function Header() {
   const [{ basket }] = useStateValue();
   const ctx = useContext(myContext);
+
+  const logout = () => {
+    axios
+      .get("http://localhost:5000/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+       if (res.data === "success"){
+         window.location.href = "/";
+       }
+      });
+  };
 
   return (
     <AppBar position="sticky" color="inherit">
@@ -20,7 +33,7 @@ function Header() {
 
         {ctx ? (
           <div className="header__nav">
-            <Link to="/logout">
+            <Link onClick={logout} to="/">
               <div className="header__option">
                 <span className="header__optionLineOne">LOGOUT</span>
               </div>

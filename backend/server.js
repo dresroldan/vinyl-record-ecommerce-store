@@ -63,7 +63,7 @@ app.post("/login", (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
+        res.send("success");
         console.log(req.user);
       });
     }
@@ -89,6 +89,11 @@ app.post("/signup", (req, res) => {
 
 app.get("/user", (req, res) => {
   res.send(req.user);
+});
+
+app.get("/logout", (req, res) => {
+  req.logout();
+  res.send("success");
 });
 
 // ------------------------------------- END OF ROUTES ------------------------------------------- //
