@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import "./Home.css";
 import Product from "./Product";
-import data from "./data.js";
-import { myContext } from "./Context";
+import data from "../data.js";
+import { myContext } from "../Context";
 import Newsletter from "./Newsletter";
+import Footer from "./Footer"
 
 function Home() {
   const ctx = useContext(myContext);
@@ -35,6 +36,7 @@ function Home() {
           </div>
         </div>
         <Newsletter />
+        <Footer/>
       </div>
     </div>
   );

@@ -1,18 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 import AlbumIcon from "@material-ui/icons/Album";
 import { AppBar, Toolbar, Badge, IconButton } from "@material-ui/core/";
 import ShoppingCartSharpIcon from "@material-ui/icons/ShoppingCartSharp";
 import "./Header.css";
-import { myContext } from "./Context";
+import { myContext } from "../Context";
 import axios from "axios";
 
 function Header() {
   const [{ basket }] = useStateValue();
   const ctx = useContext(myContext);
 
-  const logout = () => {
+  useEffect(() => {
+    const data = localStorage.getItem("items in cart");
+    if (data) {
+
+     
+
+
+      (JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items in cart", JSON.stringify(basket));
+  });
+
+  const logout = (e) => {
+    e.preventDefault();
     axios
       .get("http://localhost:5000/logout", {
         withCredentials: true,
@@ -26,7 +42,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="sticky" color="inherit">
+    <AppBar elevation={0} position="sticky" color="inherit">
       <Toolbar>
         <Link to="/">
           <AlbumIcon className="header__logo" fontSize="large" />

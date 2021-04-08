@@ -1,7 +1,7 @@
 // import { Title } from "@material-ui/icons";
 import React from "react";
 import "./Product.css";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 
 // props in es6 allow you to deconstruct the object you pass in.
 // here we are using props to deconstruct title, image, price, and rating from the product object.

@@ -1,0 +1,17 @@
+.footer{
+    background-color:#333 ;
+color: white;
+
+}
+
+.footer__about{
+    background-color:#333 ;
+    height: 200px;
+}
+
+.footer__copyright{
+
+
+    background-color: #222;
+    height: 50px;
+}

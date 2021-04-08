@@ -1,5 +1,5 @@
 .newsletter{
-    background-image: url(https://thevinylfactory.com/wp-content/uploads/2020/02/newsletter-banner.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url("https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png");
     background-size: cover;
     padding-top: 80px;
     padding-bottom: 100px;
@@ -16,7 +16,7 @@
 }
 
 .newsletter > p {
-     margin-bottom: 15px;
+     margin-bottom: 15px
 }
 
 .newsletter form {
