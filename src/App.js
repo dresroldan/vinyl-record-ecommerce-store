@@ -11,9 +11,9 @@ function App() {
     // BEM
     <Router>
       <Header />
-      <Switch>
-        <Route path="/" exact component={Home}></Route>
 
+      <Switch>
+      <Route path="/" exact component={Home}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/signup" component={Signup}></Route>
         <Route path="/checkout" component={Checkout}></Route>
