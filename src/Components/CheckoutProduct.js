@@ -3,7 +3,7 @@ import "./CheckoutProduct.css";
 import { useStateValue } from "../StateProvider";
 // import { removeFromBasket } from "./reducer";
 
-function CheckoutProduct({ id, image, title, price, rating }) {
+function CheckoutProduct({ id, image, title, price, }) {
   // basket contains our selected product items
   // dispatch is our action -- add/remove
   const [

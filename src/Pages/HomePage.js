@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './Home.css';
+import './HomePage.css';
 import Product from '../Components/Product';
-import data from '../data.js';
+import products from '../data.js';
 import { myContext } from '../Context';
 import Newsletter from '../Components/Newsletter';
 import Footer from '../Components/Footer';
@@ -26,9 +26,9 @@ function Home() {
           </div>
 
           <div className="home__product">
-            {data.products.map((product) => (
+            {products.map((product) => (
               <Product
-                id={product.id}
+                id={product._id}
                 title={product.title}
                 price={product.price}
                 image={product.image}

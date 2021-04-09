@@ -3,7 +3,7 @@ import "./Checkout.css";
 import CheckoutProduct from "../Components/CheckoutProduct";
 import { useStateValue } from "../StateProvider";
 import Subtotal from "../Components/Subtotal";
-import data from "../data.js"
+
 
 function Checkout() {
   const [{ basket }] = useStateValue();
@@ -11,7 +11,7 @@ function Checkout() {
     <div className="checkout">
         <img
           className="checkout__ad"
-          src={data.checkoutImage}
+          src={'https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png'}
           alt="record-store-ad"
         />
           <h2 className="checkout__title">Your selection</h2>

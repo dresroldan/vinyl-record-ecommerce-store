@@ -2,12 +2,13 @@
 import React from 'react';
 import './Product.css';
 import { useStateValue } from '../StateProvider';
+import { Link } from 'react-router-dom';
 
 // props in es6 allow you to deconstruct the object you pass in.
 // here we are using props to deconstruct title, image, price, and rating from the product object.
 // props allows reusability and efficiency in components.
 
-function Product({ id, title, image, price, rating }) {
+function Product({ id, title, image, price, description }) {
   const [
     ,
     // { basket }
@@ -26,26 +27,29 @@ function Product({ id, title, image, price, rating }) {
         title: title,
         image: image,
         price: price,
-        rating: rating,
+       
       },
     });
   };
 
   return (
     <div className="product">
-      <a href={`/product/${id}`}>
+      <Link to={`/product/${id}`}>
         <img src={image} alt="mardeluz-single" />
-      </a>
+      </Link>
 
       <div className="product__info">
-        <a href={`/product/${id}`}>
+        <Link href={`/product/${id}`}>
           <p>{title}</p>
-        </a>
+        </Link>
 
         <p className="product__price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
+
+        
+
         <button onClick={addToBasket}>Add to cart</button>
       </div>
     </div>

@@ -1,11 +1,12 @@
 import './App.css';
 import Header from './Components/Header';
-import Home from './Pages/Home';
+import HomePage from './Pages/HomePage';
 import Checkout from './Pages/Checkout';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Context from './Context';
+import ProductPage from './Pages/ProductPage';
 
 function App() {
   return (
@@ -27,17 +28,12 @@ function App() {
 
             {/* checkout route */}
             <Route path="/checkout">
-              <Header />
               <Checkout />
             </Route>
-            {/* 
-            <Route path="/product">
-              <Header />
-              <ProductPage />
-            </Route> */}
 
             {/* home page route */}
-            <Route path="/" component={Home} exact></Route>
+            <Route path="/" component={HomePage} exact></Route>
+            <Route path="/product/:id" component={ProductPage}></Route>
           </Switch>
         </div>
       </Context>

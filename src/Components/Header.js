@@ -1,42 +1,38 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useStateValue } from "../StateProvider";
-import AlbumIcon from "@material-ui/icons/Album";
-import { AppBar, Toolbar, Badge, IconButton } from "@material-ui/core/";
-import ShoppingCartSharpIcon from "@material-ui/icons/ShoppingCartSharp";
-import "./Header.css";
-import { myContext } from "../Context";
-import axios from "axios";
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useStateValue } from '../StateProvider';
+import AlbumIcon from '@material-ui/icons/Album';
+import { AppBar, Toolbar, Badge, IconButton } from '@material-ui/core/';
+import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
+import './Header.css';
+import { myContext } from '../Context';
+import axios from 'axios';
 
 function Header() {
   const [{ basket }] = useStateValue();
   const ctx = useContext(myContext);
 
   useEffect(() => {
-    const data = localStorage.getItem("items in cart");
+    const data = localStorage.getItem('items in cart');
     if (data) {
-
-     
-
-
-      (JSON.parse(data));
+      JSON.parse(data);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("items in cart", JSON.stringify(basket));
+    localStorage.setItem('items in cart', JSON.stringify(basket));
   });
 
   const logout = (e) => {
     e.preventDefault();
     axios
-      .get("http://localhost:5000/logout", {
+      .get('http://localhost:5000/logout', {
         withCredentials: true,
       })
       .then((res) => {
-        if (res.data === "success") {
-          window.location.href = "/";
-          console.log("successfully logged out!");
+        if (res.data === 'success') {
+          window.location.href = '/';
+          console.log('successfully logged out!');
         }
       });
   };
