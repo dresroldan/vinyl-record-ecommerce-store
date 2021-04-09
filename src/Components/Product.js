@@ -1,7 +1,7 @@
 // import { Title } from "@material-ui/icons";
-import React from "react";
-import "./Product.css";
-import { useStateValue } from "../StateProvider";
+import React from 'react';
+import './Product.css';
+import { useStateValue } from '../StateProvider';
 
 // props in es6 allow you to deconstruct the object you pass in.
 // here we are using props to deconstruct title, image, price, and rating from the product object.
@@ -20,7 +20,7 @@ function Product({ id, title, image, price, rating }) {
   const addToBasket = () => {
     // dispatches the item into the data layer
     dispatch({
-      type: "ADD_TO_BASKET",
+      type: 'ADD_TO_BASKET',
       item: {
         id: id,
         title: title,
@@ -33,9 +33,15 @@ function Product({ id, title, image, price, rating }) {
 
   return (
     <div className="product">
-      <img src={image} alt="mardeluz-single" />
+      <a href={`/product/${id}`}>
+        <img src={image} alt="mardeluz-single" />
+      </a>
+
       <div className="product__info">
-        <p>{title}</p>
+        <a href={`/product/${id}`}>
+          <p>{title}</p>
+        </a>
+
         <p className="product__price">
           <small>$</small>
           <strong>{price}</strong>

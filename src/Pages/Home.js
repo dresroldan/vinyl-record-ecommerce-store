@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import "./Home.css";
-import Product from "./Product";
-import data from "../data.js";
-import { myContext } from "../Context";
-import Newsletter from "./Newsletter";
-import Footer from "./Footer";
+import React, { useContext } from 'react';
+import './Home.css';
+import Product from '../Components/Product';
+import data from '../data.js';
+import { myContext } from '../Context';
+import Newsletter from '../Components/Newsletter';
+import Footer from '../Components/Footer';
 
 function Home() {
   const ctx = useContext(myContext);
@@ -15,7 +15,8 @@ function Home() {
     <div className="home">
       <div className="home__container">
         <div className="home__image">
-          <img className="home__image" src={data.heroImage} alt="record-shop" />
+          <h1>Discover new Music</h1>
+          {/* <img className="home__image" src={data.heroImage} alt="record-shop" ></img> */}
         </div>
 
         <div className="home__productscontainer">

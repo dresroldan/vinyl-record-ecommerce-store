@@ -12,11 +12,16 @@
   max-width: 300px;
 }
 
-.product > img {
+a > img {
   max-height: 300px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 15px;
+}
+
+a:-webkit-any-link {
+  color: black;
+  text-decoration: none;
 }
 
 .product__info > button {
@@ -31,14 +36,11 @@
   cursor: pointer;
 }
 
-.product__info > button:hover{
-
+.product__info > button:hover {
   color: #d8d8da;
   background: black;
   transition: all 0.2s ease-in-out;
 }
-
-
 
 .product__price {
   margin-top: 5px;

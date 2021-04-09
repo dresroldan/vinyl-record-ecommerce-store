@@ -5,16 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
-
+import Context from "./Context";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* state provider wraps around app so that every component can get access to the data layer */}
-
+    <Context>
       <StateProvider initialState={initialState} reducer={reducer}>
         <App />
       </StateProvider>
-  
+    </Context>
   </React.StrictMode>,
   document.getElementById("root")
 );
