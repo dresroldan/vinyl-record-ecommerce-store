@@ -1,13 +1,14 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const cors = require("cors");
-const passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
-const cookieParser = require("cookie-parser");
-const bcrypt = require("bcryptjs");
-const session = require("express-session");
-const User = require("./models/user");
-require("dotenv").config();
+const mongoose = require('mongoose');
+const express = require('express');
+const cors = require('cors');
+const passport = require('passport');
+const passportLocal = require('passport-local').Strategy;
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const User = require('./models/user');
+const products = require('./data/data');
+require('dotenv').config();
 
 // ------------------------------------- END OF IMPORTS ------------------------------------------- //
 
@@ -25,13 +26,13 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    console.log("Connected to Mongo");
+    console.log('Connected to Mongo');
   })
   .catch((err) => console.log({ err }));
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // LOCATION OF THE REACT APP WE'RE CONNNECTING TO
+    origin: 'http://localhost:3000', // LOCATION OF THE REACT APP WE'RE CONNNECTING TO
     credentials: true,
   })
 );
@@ -41,50 +42,59 @@ app.use(express.json());
 // EXPRESS SESSION
 app.use(
   session({
-    secret: "secretcode",
+    secret: 'secretcode',
     resave: true,
     saveUninitialized: true,
   })
 );
 
-app.use(cookieParser("secretcode"));
+app.use(cookieParser('secretcode'));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passportConfig")(passport);
+require('./passportConfig')(passport);
 
 // ------------------------------------- END OF MIDDLEWARE ------------------------------------------- //
 
 // ROUTES
 
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
+app.get('/api/products', (req, res) => {
+  res.json(products);
+});
+
+app.get('/api/products/:id', (req, res) => {
+  const product = products.find((p) => p._id === req.params.id);
+  res.json(product);
+});
+
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists ");
+    if (!user) res.send('No User Exists ');
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("success");
+        res.send('success');
         console.log(req.user);
       });
     }
   })(req, res, next);
 });
 
-app.post("/signup", async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { username, password } = req?.body;
   if (
     !username ||
     !password ||
-    typeof username !== "string" ||
-    typeof password !== "string"
+    typeof username !== 'string' ||
+    typeof password !== 'string'
   ) {
-    res.send("Improper Values");
+    res.send('Improper Values');
     return;
   }
 
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send("User already Exists");
+    if (doc) res.send('User already Exists');
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -93,18 +103,18 @@ app.post("/signup", async (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("User Created");
+      res.send('User Created');
     }
   });
 });
 
-app.get("/user", (req, res) => {
+app.get('/user', (req, res) => {
   res.send(req.user);
 });
 
-app.get("/logout", (req, res) => {
+app.get('/logout', (req, res) => {
   req.logout();
-  res.send("success");
+  res.send('success');
 });
 
 // ------------------------------------- END OF ROUTES ------------------------------------------- //
