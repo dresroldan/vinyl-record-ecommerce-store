@@ -70,7 +70,18 @@ app.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-app.post("/signup", (req, res) => {
+app.post("/signup", async (req, res) => {
+  const { username, password } = req?.body;
+  if (
+    !username ||
+    !password ||
+    typeof username !== "string" ||
+    typeof password !== "string"
+  ) {
+    res.send("Improper Values");
+    return;
+  }
+
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User already Exists");

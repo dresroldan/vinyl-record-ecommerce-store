@@ -7,7 +7,7 @@ function Newsletter() {
 
 <h2>Join our Newsletter</h2>
 <p>New releases, exclusives, features, films and more.</p>
-<form action="http://google.com">
+<form action="">
 <input type="email" placeholder="Enter your email"/>
 <button>SIGN UP</button>
 </form>

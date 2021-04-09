@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext,  } from "react";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import AlbumIcon from "@material-ui/icons/Album";
@@ -12,23 +12,22 @@ function Header() {
   const [{ basket }] = useStateValue();
   const ctx = useContext(myContext);
 
-  useEffect(() => {
-    const data = localStorage.getItem("items in cart");
-    if (data) {
+  // useEffect(() => {
+  //   const data = localStorage.getItem("items in cart");
+  //   if (data) {
 
      
 
 
-      (JSON.parse(data));
-    }
-  }, []);
+  //     (JSON.parse(data));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("items in cart", JSON.stringify(basket));
-  });
+  // useEffect(() => {
+  //   localStorage.setItem("items in cart", JSON.stringify(basket));
+  // });
 
-  const logout = (e) => {
-    e.preventDefault();
+  const logout = () => {
     axios
       .get("http://localhost:5000/logout", {
         withCredentials: true,

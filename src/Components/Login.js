@@ -6,7 +6,7 @@ import axios from "axios";
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
   const login = (e) => {
     e.preventDefault();
@@ -23,21 +23,21 @@ function Login() {
         window.location.href = "/";
       }
 
-      console.log("successfully logged in!");
+      console.log("No user exists!");
     });
   };
 
-  const getUser = (e) => {
-    e.preventDefault();
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:5000/user",
-    }).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
-  };
+  // const getUser = (e) => {
+  //   e.preventDefault();
+  //   axios({
+  //     method: "GET",
+  //     withCredentials: true,
+  //     url: "http://localhost:5000/user",
+  //   }).then((res) => {
+  //     setData(res.data);
+  //     console.log(res.data);
+  //   });
+  // };
 
   return (
     <div className="login">
@@ -70,24 +70,20 @@ function Login() {
           <button type="submit" onClick={login} className="login__signInButton">
             Sign in
           </button>
-          <button
+          {/* <button
             type="submit"
             onClick={getUser}
             className="login__signInButton"
           >
             get user
-          </button>
+          </button> */}
 
-          {data ? <h1>Welcome back {data.username}</h1> : null}
+          {/* {data ? <h1>Welcome back {data.username}</h1> : null} */}
         </form>
         <p>
           By signing-in you agree to discM8's Conditions of Use & Sale. Please
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
         </p>
-
-        {/* <button onClick={register} className="login__signUpButton">
-          Create your discM8 account
-        </button> */}
 
         <Link to="/signup" className="login__signUpButton">
           Create your discM8 account

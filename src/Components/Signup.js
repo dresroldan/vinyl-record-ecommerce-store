@@ -18,7 +18,13 @@ function Signup() {
       },
       withCredentials: true,
       url: "http://localhost:5000/signup",
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      if (res.data === "User Created") {
+        window.location.href = "/login";
+        console.log("Successfully signedup up!")
+      }
+
+    });
   };
 
   return (
