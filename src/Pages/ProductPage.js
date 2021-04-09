@@ -1,41 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import products from '../data';
+import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './ProductPage.css';
 
-import { useStateValue } from '../StateProvider';
+const ProductPage = ({ match }) => {
+  const [product, setProduct] = useState({});
 
-const ProductPage = ({ match, id, title, image, price, description }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
 
-  const [
-    ,
-    // { basket }
+      setProduct(data);
+    };
 
-    dispatch,
-  ] = useStateValue();
-
-  // console.log("this is the basket >>>", basket);
-
-  const addToBasket = () => {
-    // dispatches the item into the data layer
-    dispatch({
-      type: 'ADD_TO_BASKET',
-      item: {
-        id: id,
-        title: title,
-        image: image,
-        price: price,
-        description: description,
-      },
-    });
-  };
+    fetchProduct();
+  });
 
   return (
     <div className="productpage">
       <div className="productpage__container">
         <div className="productpage__productinfo">
-          <img className="productpage__image" src={product.image} />
+          <img className="productpage__image" src={product.image} alt="" />
 
           <div className="productpage__productdetails">
             <h2 className="productpage__heading">{product.title}</h2>
@@ -45,7 +30,7 @@ const ProductPage = ({ match, id, title, image, price, description }) => {
         </div>
 
         <div className="productpage__options">
-          <button onClick={addToBasket}>Add to cart</button>
+          {/* <button onClick={addToBasket}>Add to cart</button> */}
         </div>
       </div>
     </div>

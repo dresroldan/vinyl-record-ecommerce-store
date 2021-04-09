@@ -1,14 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './HomePage.css';
 import Product from '../Components/Product';
-import products from '../data.js';
 import { myContext } from '../Context';
 import Newsletter from '../Components/Newsletter';
 import Footer from '../Components/Footer';
+import axios from 'axios';
 
 function Home() {
-  const ctx = useContext(myContext);
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/api/products');
+
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+
+  const ctx = useContext(myContext);
   console.log(ctx);
 
   return (
