@@ -9,7 +9,10 @@ import express from 'express';
 // import User from ('./models/user');
 import products from './data/data.js';
 import dotenv from 'dotenv';
+import connectDB from './config/db.js';
 dotenv.config();
+
+connectDB();
 
 // ------------------------------------- END OF IMPORTS ------------------------------------------- //
 
