@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import './ProductPage.css';
+import { listProductDetails } from '../actions/productActions';
 
 const ProductPage = ({ match }) => {
-  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
+
+const productDetails = useSelector(state => state.productDetails)
+const {loading, error, product} = productDetails
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
+    dispatch(listProductDetails(match.params.id));
+  }, [dispatch ,match]);
 
-      setProduct(data);
-    };
 
-    fetchProduct();
-  });
 
   return (
     <div className="productpage">
