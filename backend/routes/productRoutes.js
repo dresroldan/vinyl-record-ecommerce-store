@@ -4,10 +4,11 @@ import Product from '../models/productModel.js';
 import asyncHandler from 'express-async-handler';
 
 // Fetch all products
-router.get( 
+router.get(
   '/',
   asyncHandler(async (req, res) => {
     const products = await Product.find({});
+
     res.json(products);
   })
 );

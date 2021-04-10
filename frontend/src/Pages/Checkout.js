@@ -1,8 +1,8 @@
 import React from "react";
 import "./Checkout.css";
-import CheckoutProduct from "../Components/CheckoutProduct";
+// import CheckoutProduct from "../components/CheckoutProduct";
 
-import Subtotal from "../Components/Subtotal";
+import Subtotal from "../components/Subtotal";
 
 
 function Checkout() {

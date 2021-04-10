@@ -1,12 +1,12 @@
 import './App.css';
-import Header from './Components/Header';
-import HomePage from './Pages/HomePage';
-import Checkout from './Pages/Checkout';
-import Login from './Pages/Login';
-import Signup from './Pages/Signup';
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import Checkout from './pages/Checkout';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Context from './Context';
-import ProductPage from './Pages/ProductPage';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   return (
