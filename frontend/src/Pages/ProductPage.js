@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProductPage.css';
 import { listProductDetails } from '../actions/productActions';
 
-const ProductPage = ({ match }) => {
+const ProductPage = ({  match }) => {
   const dispatch = useDispatch();
 
-const productDetails = useSelector(state => state.productDetails)
-const {loading, error, product} = productDetails
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch ,match]);
+  }, [dispatch, match]);
 
+  const addToCartHandler = () => {
+   alert("this button works")
+}
 
 
   return (
@@ -24,13 +27,14 @@ const {loading, error, product} = productDetails
 
           <div className="productpage__productdetails">
             <h2 className="productpage__heading">{product.title}</h2>
-            <p className="productpage__price">{product.price}</p>
             <p>{product.description}</p>
+            <p className="productpage__price">{product.price}</p>
+            <p className="productpage__stock" >{product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}</p>
           </div>
         </div>
 
         <div className="productpage__options">
-          {/* <button onClick={addToBasket}>Add to cart</button> */}
+          <button onClick={addToCartHandler}>Add to cart</button>
         </div>
       </div>
     </div>

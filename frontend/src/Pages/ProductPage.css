@@ -39,6 +39,12 @@ margin-bottom: 10px;
 font-weight: bold;
 
 }
+.productpage__stock{
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: green;
+  }
+  
 
 
 .productpage__options > button {
