@@ -1,12 +1,12 @@
 import React from "react";
 import "./Checkout.css";
 import CheckoutProduct from "../Components/CheckoutProduct";
-import { useStateValue } from "../StateProvider";
+
 import Subtotal from "../Components/Subtotal";
 
 
 function Checkout() {
-  const [{ basket }] = useStateValue();
+  // const [{ basket }] = useStateValue();
   return (
     <div className="checkout">
         <img
@@ -22,7 +22,7 @@ function Checkout() {
           {/* passing product props to display item content in checkout basket */}
           {/* when adding item to basket this map array method creates a new array and will display onto checkout page*/}
 
-          {basket.map((item) => (
+          {/* {basket.map((item) => (
             <CheckoutProduct
               id={item.id}
               title={item.title}
@@ -30,7 +30,7 @@ function Checkout() {
               price={item.price}
               
             />
-          ))}
+          ))} */}
         </div>
         <Subtotal />
       </div>

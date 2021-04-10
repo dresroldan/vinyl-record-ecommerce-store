@@ -1,7 +1,7 @@
 // import { Title } from "@material-ui/icons";
 import React from 'react';
 import './Product.css';
-import { useStateValue } from '../StateProvider';
+
 import { Link } from 'react-router-dom';
 
 // props in es6 allow you to deconstruct the object you pass in.
@@ -9,28 +9,7 @@ import { Link } from 'react-router-dom';
 // props allows reusability and efficiency in components.
 
 function Product({ id, title, image, price, description }) {
-  const [
-    ,
-    // { basket }
 
-    dispatch,
-  ] = useStateValue();
-
-  // console.log("this is the basket >>>", basket);
-
-  const addToBasket = () => {
-    // dispatches the item into the data layer
-    dispatch({
-      type: 'ADD_TO_BASKET',
-      item: {
-        id: id,
-        title: title,
-        image: image,
-        price: price,
-       
-      },
-    });
-  };
 
   return (
     <div className="product">
@@ -50,7 +29,7 @@ function Product({ id, title, image, price, description }) {
 
         
 
-        <button onClick={addToBasket}>Add to cart</button>
+        {/* <button onClick={addToBasket}>Add to cart</button> */}
       </div>
     </div>
   );

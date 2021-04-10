@@ -7,6 +7,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Jazz',
   },
 
   {
@@ -17,6 +18,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Funk',
   },
   {
     title: 'Tenorio Jr. – Embalo (LP, Shape, RE)',
@@ -26,6 +28,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Jazz',
   },
   {
     title: 'Béliz – Mémoires (LP, Album)',
@@ -45,6 +48,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Soul',
   },
 
   {
@@ -55,6 +59,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Electronic',
   },
   {
     title: 'Cortex (6) – Troupeau Bleu (LP, Album, Ltd, RE, Pos)',
@@ -64,6 +69,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Jazz-funk',
   },
   {
     title:
@@ -74,6 +80,7 @@ const products = [
     rating: 5,
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Soul',
   },
 ];
 

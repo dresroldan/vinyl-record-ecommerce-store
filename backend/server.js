@@ -7,9 +7,10 @@ import express from 'express';
 // import bcrypt from ('bcryptjs');
 // import session  from ('express-session');
 // import User from ('./models/user');
-import products from './data/data.js';
+
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+import productRoutes from './routes/productRoutes.js';
 dotenv.config();
 
 connectDB();
@@ -61,15 +62,6 @@ app.use(express.json());
 
 // ROUTES
 
-app.get('/api/products', (req, res) => {
-  res.json(products);
-});
-
-app.get('/api/products/:id', (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
-
 // app.post('/login', (req, res, next) => {
 //   passport.authenticate('local', (err, user, info) => {
 //     if (err) throw err;
@@ -120,6 +112,8 @@ app.get('/api/products/:id', (req, res) => {
 //   req.logout();
 //   res.send('success');
 // });
+
+app.use('/api/products', productRoutes);
 
 // ------------------------------------- END OF ROUTES ------------------------------------------- //
 
