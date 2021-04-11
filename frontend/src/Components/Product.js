@@ -1,15 +1,21 @@
 // import { Title } from "@material-ui/icons";
 import React from 'react';
 import './Product.css';
-
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../actions/cartActions';
 
 // props in es6 allow you to deconstruct the object you pass in.
 // here we are using props to deconstruct title, image, price, and rating from the product object.
 // props allows reusability and efficiency in components.
 
-function Product({ id, title, image, price, description }) {
+function Product({ id, image, title, price }) {
+  const productId = id;
+  const dispatch = useDispatch();
 
+  const addToCartHandler = () => {
+    dispatch(addToCart(productId));
+  };
 
   return (
     <div className="product">
@@ -27,9 +33,7 @@ function Product({ id, title, image, price, description }) {
           <strong>{price}</strong>
         </p>
 
-        
-
-        {/* <button onClick={addToBasket}>Add to cart</button> */}
+        <button onClick={addToCartHandler}>Add to cart</button>
       </div>
     </div>
   );

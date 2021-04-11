@@ -13,13 +13,13 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
-    case "ADD_TO_BASKET":
+    case 'ADD_TO_BASKET':
       return {
         ...state,
         basket: [...state.basket, action.item],
       };
 
-    case "REMOVE_FROM_BASKET":
+    case 'REMOVE_FROM_BASKET':
       // find index function is going through all of the basket items and checks if any of the basket items id match the action id that is passed in
       // findIndex will find the first match and return
       const index = state.basket.findIndex(

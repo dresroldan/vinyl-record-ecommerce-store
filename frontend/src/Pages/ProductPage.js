@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductPage.css';
 import { listProductDetails } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions';
 
-const ProductPage = ({  match }) => {
+const ProductPage = ({  match, id }) => {
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -14,10 +15,12 @@ const ProductPage = ({  match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
-  const addToCartHandler = () => {
-   alert("this button works")
-}
+  // const productId = id;
 
+
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart(productId));
+  // };
 
   return (
     <div className="productpage">
@@ -34,7 +37,7 @@ const ProductPage = ({  match }) => {
         </div>
 
         <div className="productpage__options">
-          <button onClick={addToCartHandler}>Add to cart</button>
+          {/* <button onClick={addToCartHandler}>Add to cart</button> */}
         </div>
       </div>
     </div>

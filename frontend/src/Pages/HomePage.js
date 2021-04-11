@@ -11,7 +11,9 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { products } = productList;
+
+  console.log(products);
 
   useEffect(() => {
     dispatch(listProducts());
@@ -30,22 +32,17 @@ function HomePage() {
             <h3>Shop</h3>
             <p>Collect our newest releases</p>
           </div>
-          {loading ? (
-            <h2>Loading...</h2>
-          ) : error ? (
-            <h3>{error}</h3>
-          ) : (
-            <div className="home__product">
-              {products.map((product) => (
-                <Product
-                  id={product._id}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                />
-              ))}
-            </div>
-          )}
+
+          <div className="home__product">
+            {products.map((product) => (
+              <Product
+                id={product._id}
+                title={product.title}
+                price={product.price}
+                image={product.image}
+              />
+            ))}
+          </div>
         </div>
         <Newsletter />
         <Footer />

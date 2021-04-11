@@ -1,11 +1,20 @@
-import React from "react";
-import "./CheckoutProduct.css";
+import React from 'react';
+import './CheckoutProduct.css';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../actions/cartActions';
 
 // import { removeFromBasket } from "./reducer";
 
-function CheckoutProduct({ id, image, title, price, }) {
+function CheckoutProduct({ id, image, title, price }) {
   // basket contains our selected product items
   // dispatch is our action -- add/remove
+
+  // const productId = id;
+  const dispatch = useDispatch();
+
+  const removeFromCartHandler = () => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <div className="checkoutProduct">
@@ -18,14 +27,7 @@ function CheckoutProduct({ id, image, title, price, }) {
           <strong>{price}</strong>
         </p>
 
-        {/* <div className="checkoutProduct__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p>⭐</p>
-            ))}
-        </div> */}
-        <button onClick={removeFromBasket}>Remove from Basket</button>
+        <button onClick={removeFromCartHandler}>Remove from Basket</button>
       </div>
     </div>
   );
