@@ -3,6 +3,7 @@ import './Checkout.css';
 import CheckoutProduct from '../components/CheckoutProduct';
 import { useSelector } from 'react-redux';
 
+
 import Subtotal from '../components/Subtotal';
 
 function Checkout() {

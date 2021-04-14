@@ -23,8 +23,12 @@ function HomePage() {
     <div className="home">
       <div className="home__container">
         <div className="home__image">
-          <h1>Discover new Music</h1>
-          {/* <img className="home__image" src={data.heroImage} alt="record-shop" ></img> */}
+          <div className="home__imagetext">
+<span>Features</span>
+
+          <h1>Our favorite new releases this week  </h1>
+          </div>
+       
         </div>
 
         <div className="home__productscontainer">

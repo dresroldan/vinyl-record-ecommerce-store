@@ -1,10 +1,13 @@
-import React from "react";
-import "./Subtotal.css";
-import CurrencyFormat from "react-currency-format";
-
-import { getBasketTotal } from "../reducer";
+import React from 'react';
+import './Subtotal.css';
+import CurrencyFormat from 'react-currency-format';
+import { useSelector } from 'react-redux';
 
 function Subtotal() {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  const getBasketTotal = (cartItems) =>
+    cartItems?.reduce((amount, item) => item.price + amount, 0);
 
   return (
     <div className="subtotal">
@@ -13,7 +16,7 @@ function Subtotal() {
         renderText={(value) => (
           <>
             <p>
-              {/* Subtotal ({basket.length} items): <strong>{value}</strong> */}
+              Subtotal ({cartItems.length} items): <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" /> This order contains a gift
@@ -21,10 +24,10 @@ function Subtotal() {
           </>
         )}
         decimalScale={2}
-        value={2}
-        displayType={"text"}
+        value={getBasketTotal(cartItems)}
+        displayType={'text'}
         thousandSeperator={true}
-        prefix={"$"}
+        prefix={'$'}
       />
 
       <button>PROCEED TO CHECKOUT</button>
