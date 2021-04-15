@@ -9,8 +9,8 @@ import { addToCart } from '../actions/cartActions';
 // here we are using props to deconstruct title, image, price, and rating from the product object.
 // props allows reusability and efficiency in components.
 
-function Product({ id, image, title, price }) {
-  const productId = id;
+function Product({ _id, image, title, price }) {
+  const productId = _id;
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
@@ -19,12 +19,12 @@ function Product({ id, image, title, price }) {
 
   return (
     <div className="product">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${_id}`}>
         <img src={image} alt="mardeluz-single" />
       </Link>
 
       <div className="product__info">
-        <Link href={`/product/${id}`}>
+        <Link href={`/product/${_id}`}>
           <p>{title}</p>
         </Link>
 

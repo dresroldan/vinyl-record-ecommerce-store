@@ -3,17 +3,14 @@ import './CheckoutProduct.css';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
 
-// import { removeFromBasket } from "./reducer";
+function CheckoutProduct({ _id, image, title, price }) {
+  
+    // dispatch is our action -- add/remove
 
-function CheckoutProduct({ id, image, title, price }) {
-  // basket contains our selected product items
-  // dispatch is our action -- add/remove
-
-  // const productId = id;
   const dispatch = useDispatch();
 
   const removeFromCartHandler = () => {
-    dispatch(removeFromCart(id));
+    dispatch(removeFromCart(_id));
   };
 
   return (

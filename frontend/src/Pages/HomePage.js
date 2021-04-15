@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './HomePage.css';
 import Product from '../components/Product';
-import { myContext } from '../Context';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import { listProducts } from '../actions/productActions';
@@ -13,8 +12,6 @@ function HomePage() {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
 
-  console.log(products);
-
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
@@ -23,12 +20,13 @@ function HomePage() {
     <div className="home">
       <div className="home__container">
         <div className="home__image">
-          <div className="home__imagetext">
-<span>Features</span>
+          <div className="blur">
+            <div className="home__imagetext">
+              <span>Features</span>
 
-          <h1>Our favorite new releases this week  </h1>
+              <h1>Our favorite new releases this week </h1>
+            </div>
           </div>
-       
         </div>
 
         <div className="home__productscontainer">
@@ -40,7 +38,7 @@ function HomePage() {
           <div className="home__product">
             {products.map((product) => (
               <Product
-                id={product._id}
+                _id={product._id}
                 title={product.title}
                 price={product.price}
                 image={product.image}

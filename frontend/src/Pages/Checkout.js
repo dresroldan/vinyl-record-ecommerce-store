@@ -2,7 +2,7 @@ import React from 'react';
 import './Checkout.css';
 import CheckoutProduct from '../components/CheckoutProduct';
 import { useSelector } from 'react-redux';
-
+import Footer from '../components/Footer';
 
 import Subtotal from '../components/Subtotal';
 
@@ -12,13 +12,6 @@ function Checkout() {
 
   return (
     <div className="checkout">
-      <img
-        className="checkout__ad"
-        src={
-          'https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png'
-        }
-        alt="record-store-ad"
-      />
       <h2 className="checkout__title">Your selection</h2>
       <div className="checkout__left">
         <div>
@@ -27,7 +20,7 @@ function Checkout() {
 
           {cartItems.map((cartItem) => (
             <CheckoutProduct
-              id={cartItem._id}
+              _id={cartItem._id}
               title={cartItem.title}
               price={cartItem.price}
               image={cartItem.image}
@@ -38,6 +31,14 @@ function Checkout() {
       </div>
 
       <div className="checkout__right"></div>
+      <img
+        className="checkout__ad"
+        src={
+          'https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png'
+        }
+        alt="record-store-ad"
+      />
+      <Footer></Footer>
     </div>
   );
 }

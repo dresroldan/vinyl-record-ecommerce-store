@@ -27,9 +27,7 @@ function App() {
           </Route>
 
           {/* checkout route */}
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
+          <Route path="/checkout" component={Checkout}></Route>
 
           <Route path="/product/:id" component={ProductPage}></Route>
           {/* home page route */}
