@@ -20,4 +20,8 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser };
+const getUserProfile = asyncHandler(async (req, res) => {
+  res.send('success');
+});
+
+export { authUser, getUserProfile };
