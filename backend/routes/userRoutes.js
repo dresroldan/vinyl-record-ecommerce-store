@@ -1,11 +1,11 @@
-import express from 'express';
-const router = express.Router();
-import { authUser, getUserProfile } from '../controllers/userController.js';
-import { protect } from '../middleware/authMiddleware.js';
+// import express from 'express';
+// const router = express.Router();
+// import { authUser, getUserProfile } from '../controllers/userController.js';
+// import { protect } from '../middleware/authMiddleware.js';
 
-// Fetch all products
-router.post('/login', authUser);
+// // Fetch all products
+// router.post('/login', authUser);
 
-router.route('/profile').get(protect, getUserProfile);
+// router.route('/profile').get(protect, getUserProfile);
 
-export default router;
+// export default router;
