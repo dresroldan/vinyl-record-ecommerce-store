@@ -71,14 +71,12 @@ passport.deserializeUser((id, cb) => {
 app.use('/api/products', productRoutes);
 // app.use('/api/users', userRoutes);
 
-app.use('/signup', async (req, res) => {
-  const { username, email, password } = req?.body;
+app.post('/signup', async (req, res) => {
+  const { username, password } = req?.body;
   if (
     !username ||
-    !email ||
     !password ||
     typeof username !== 'string' ||
-    typeof password !== 'string' ||
     typeof password !== 'string'
   ) {
     res.send('Improper Values');
@@ -86,13 +84,12 @@ app.use('/signup', async (req, res) => {
   }
   User.findOne({ username }, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send('User already Exists');
+    if (doc) res.send('User Already Exists');
     if (!doc) {
-      const hashPassword = await bcrypt.hash(req.body.password, 10);
+      const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: hashPassword,
+        username,
+        password: hashedPassword,
       });
       await newUser.save();
       res.send('success');
@@ -100,17 +97,17 @@ app.use('/signup', async (req, res) => {
   });
 });
 
-app.post("/login", passport.authenticate("local"), (req, res) => {
-  res.send("successfull")
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.send('successfull');
 });
 
 app.get('/user', (req, res) => {
   res.send(req.user);
 });
 
-app.get("/logout", (req, res) => {
+app.get('/logout', (req, res) => {
   req.logout();
-  res.send("successfull logout")
+  res.send('successfull logout');
 });
 
 app.listen(PORT, () => {

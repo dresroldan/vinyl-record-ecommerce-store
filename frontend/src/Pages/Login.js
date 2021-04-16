@@ -1,43 +1,30 @@
-import React, { useState } from "react";
-import "./Login.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './Login.css';
+import { Link } from 'react-router-dom';
+import { login } from '../actions/userActions';
+import { useSelector,useDispatch } from 'react-redux';
 
-function Login() {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  // const [data, setData] = useState(null);
 
-  const login = (e) => {
+function Login({location, history} ) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+ 
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect)
+    }
+  }, [history, userInfo, redirect])
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    axios({
-      method: "POST",
-      data: {
-        username: loginEmail,
-        password: loginPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:5000/login",
-    }).then((res) => {
-      if (res.data === "success") {
-        window.location.href = "/";
-      }
-
-      console.log("No user exists!");
-    });
+    dispatch(login(username, password))
   };
-
-  // const getUser = (e) => {
-  //   e.preventDefault();
-  //   axios({
-  //     method: "GET",
-  //     withCredentials: true,
-  //     url: "http://localhost:5000/user",
-  //   }).then((res) => {
-  //     setData(res.data);
-  //     console.log(res.data);
-  //   });
-  // };
 
   return (
     <div className="login">
@@ -55,19 +42,23 @@ function Login() {
         <form>
           {/* <h5>E-mail</h5> */}
           <input
-            type="text"
-            // value={email}
-            onChange={(e) => setLoginEmail(e.target.value)}
-            placeholder="Email"
+            type="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Email"
           />
           {/* <h5>Password</h5> */}
           <input
             type="password"
-            // value={password}
-            onChange={(e) => setLoginPassword(e.target.value)}
-            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter Password"
           />
-          <button type="submit" onClick={login} className="login__signInButton">
+          <button
+            type="submit"
+            onClick={submitHandler}
+            className="login__signInButton"
+          >
             Sign in
           </button>
           {/* <button

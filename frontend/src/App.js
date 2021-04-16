@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import Context from './Context';
 import ProductPage from './pages/ProductPage';
 
+
 function App() {
   return (
     // BEM
@@ -22,9 +23,7 @@ function App() {
             <Signup />
           </Route>
 
-          <Route path="/login">
-            <Login />
-          </Route>
+          <Route path="/login" component={Login}></Route>
 
           {/* checkout route */}
           <Route path="/checkout" component={Checkout}></Route>
