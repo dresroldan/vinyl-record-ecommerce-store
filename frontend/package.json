@@ -1,5 +1,5 @@
 {
-  "homepage": "http://dresroldan.github.io/vinyl-record-ecommerce-store",
+ 
   "name": "record-store",
   "proxy": "http://127.0.0.1:5000",
   "type": "module",
