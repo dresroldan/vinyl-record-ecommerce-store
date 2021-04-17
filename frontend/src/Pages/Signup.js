@@ -1,30 +1,42 @@
-import React, { useState } from "react";
-import "./Signup.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './Signup.css';
+import { Link } from 'react-router-dom';
+import { register } from '../actions/userActions';
+import { useSelector, useDispatch } from 'react-redux';
+import Alert from '@material-ui/lab/Alert';
 
-function Signup() {
-  const [signupEmail, setSignupEmail] = useState("");
-  const [signupPassword, setSignupPassword] = useState("");
+function Signup({ location, history }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
 
-  const signup = (e) => {
+  const dispatch = useDispatch();
+  const userSignup = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userSignup;
+
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
+  const submitHandler = (e) => {
     e.preventDefault();
-
-    axios({
-      method: "POST",
-      data: {
-        username: signupEmail,
-        password: signupPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:5000/signup",
-    }).then((res) => {
-      if (res.data === "User Created") {
-        window.location.href = "/login";
-        console.log("Successfully signedup up!")
-      }
-
-    });
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match!');
+    } else if (
+      !username ||
+      !password ||
+      typeof username !== 'string' ||
+      typeof password !== 'string'
+    ) {
+      setMessage('Error: Email and Password are required.');
+    } else {
+      dispatch(register(username, password));
+    }
   };
 
   return (
@@ -39,23 +51,33 @@ function Signup() {
 
       <div className="signup__container">
         <h1>Create account </h1>
+        {message && <Alert severity="error">{message}</Alert>}
+        {error && <Alert severity="error">{error}</Alert>}
 
         <form>
           {/* <h5>E-mail</h5> */}
           <input
-            type="text"
+            type="email"
             // value={signupEmail}
-            onChange={(e) => setSignupEmail(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Email"
           />
           {/* <h5>Password</h5> */}
           <input
             type="password"
             // value={signupPassword}
-            onChange={(e) => setSignupPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-          <button onClick={signup} className="signup__signUpButton">
+
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+          />
+
+          <button onClick={submitHandler} className="signup__signUpButton">
             Create your discM8 account
           </button>
         </form>

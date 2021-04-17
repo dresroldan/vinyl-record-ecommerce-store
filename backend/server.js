@@ -72,18 +72,18 @@ app.use('/api/products', productRoutes);
 // app.use('/api/users', userRoutes);
 
 app.post('/signup', async (req, res) => {
-  const { username, password } = req?.body;
+  const { username, password } = req.body;
+
   if (
     !username ||
     !password ||
     typeof username !== 'string' ||
     typeof password !== 'string'
   ) {
-    res.send('Improper Values');
-    return;
+    res.status(400);
   }
-  User.findOne({ username }, async (err, doc) => {
-    if (err) throw err;
+  User.findOne({ username }, async (error, doc) => {
+    if (error) throw error;
     if (doc) res.send('User Already Exists');
     if (!doc) {
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -98,7 +98,7 @@ app.post('/signup', async (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.send('successfull');
+  res.send('user is logged in');
 });
 
 app.get('/user', (req, res) => {
@@ -106,8 +106,8 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-  req.logout();
   res.send('successfull logout');
+  req.logout();
 });
 
 app.listen(PORT, () => {

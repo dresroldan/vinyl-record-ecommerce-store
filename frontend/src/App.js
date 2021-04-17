@@ -8,32 +8,24 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import Context from './Context';
 import ProductPage from './pages/ProductPage';
 
-
 function App() {
   return (
     // BEM
     <Router>
-      {/* <Context> */}
       <div className="app">
         <Header />
         <Switch>
-          {/* login route */}
-
-          <Route path="/signup">
-            <Signup />
-          </Route>
+          <Route path="/signup" component={Signup}></Route>
 
           <Route path="/login" component={Login}></Route>
 
-          {/* checkout route */}
           <Route path="/checkout" component={Checkout}></Route>
 
           <Route path="/product/:id" component={ProductPage}></Route>
-          {/* home page route */}
+
           <Route path="/" component={HomePage}></Route>
         </Switch>
       </div>
-      {/* </Context> */}
     </Router>
   );
 }

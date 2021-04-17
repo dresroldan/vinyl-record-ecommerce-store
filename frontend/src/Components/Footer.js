@@ -12,6 +12,7 @@ function Footer() {
                 href="https://www.linkedin.com/in/andresroldan23/"
                 target="_blank"
                 class="color-2"
+                rel="noreferrer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                   <path
@@ -24,6 +25,7 @@ function Footer() {
             <li>
               <a
                 href="https://twitter.com/?lang=en"
+                rel="noreferrer"
                 target="_blank"
                 class="color-2"
               >
@@ -38,6 +40,7 @@ function Footer() {
             <li>
               <a
                 href="https://github.com/dresroldan"
+                rel="noreferrer"
                 target="_blank"
                 class="color-2"
               >

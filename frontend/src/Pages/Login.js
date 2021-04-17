@@ -2,29 +2,40 @@ import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { login } from '../actions/userActions';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Alert from '@material-ui/lab/Alert';
 
-
-function Login({location, history} ) {
+function Login({ location, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo, error } = userLogin;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
- console.log(redirect)
- 
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+  console.log(redirect);
+
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      history.push(redirect);
     }
-  }, [history, userInfo, redirect])
+  }, [history, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(username, password))
+
+    if (
+      !username ||
+      !password ||
+      typeof username !== 'string' ||
+      typeof password !== 'string'
+    ) {
+      setMessage('Error: Email and Password are required.');
+    } else {
+      dispatch(login(username, password));
+    }
   };
 
   return (
@@ -39,6 +50,7 @@ function Login({location, history} ) {
 
       <div className="login__container">
         <h1>Sign in </h1>
+        {message && <Alert severity="error">{message}</Alert>}
 
         <form>
           {/* <h5>E-mail</h5> */}

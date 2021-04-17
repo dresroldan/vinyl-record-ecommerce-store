@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import AlbumIcon from '@material-ui/icons/Album';
 import { AppBar, Toolbar, Badge, IconButton } from '@material-ui/core/';
 import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 import './Header.css';
-import {logout} from '../actions/userActions'
+import { logout } from '../actions/userActions';
 
 function Header() {
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { cartItems } = cart;
 
   console.log(cartItems);
@@ -17,10 +17,9 @@ function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-const logoutHandler = () =>{
-  dispatch(logout())
-}
-
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   return (
     <AppBar elevation={0} position="sticky" color="inherit">
@@ -33,7 +32,9 @@ const logoutHandler = () =>{
           <div className="header__nav">
             <Link to="/logout">
               <div className="header__option">
-                <span onClick={logoutHandler} className="header__optionLineOne">LOG OUT</span>
+                <span onClick={logoutHandler} className="header__optionLineOne">
+                  LOG OUT
+                </span>
               </div>
             </Link>
 
