@@ -4,6 +4,9 @@
   "description": "Vinyl Record Store",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
