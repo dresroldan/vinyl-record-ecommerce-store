@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header';
+// import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
@@ -13,7 +13,7 @@ function App() {
     // BEM
     <Router>
       <div className="app">
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route path="/signup" component={Signup}></Route>
 
