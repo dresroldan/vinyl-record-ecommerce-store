@@ -15,7 +15,7 @@
     "data:import": "node backend/seeder ",
     "data:destroy": "node backend/seeder -d",
     "heroku-postbuild": "npm run build",
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && gh-pages -d build"
   },
   "keywords": [],
   "author": "Andres Roldan",

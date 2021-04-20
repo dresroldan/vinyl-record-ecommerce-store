@@ -12,7 +12,7 @@ function Login({ location, history }) {
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo, error } = userLogin;
+  const { userInfo } = userLogin;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
   console.log(redirect);

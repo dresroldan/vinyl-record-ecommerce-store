@@ -13,7 +13,7 @@ function Signup({ location, history }) {
 
   const dispatch = useDispatch();
   const userSignup = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userSignup;
+  const {  error, userInfo } = userSignup;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
