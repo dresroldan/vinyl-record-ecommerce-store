@@ -1,25 +1,24 @@
 import './App.css';
-// import Header from './components/Header';
+import Header from './components/Header';
 import HomePage from './pages/HomePage';
-import Checkout from './pages/Checkout';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import Context from './Context';
+import CheckoutPage from './pages/CheckoutPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 import ProductPage from './pages/ProductPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 function App() {
   return (
-    // BEM
     <Router>
       <div className="app">
-        {/* <Header /> */}
+        <Header />
         <Switch>
-          <Route path="/signup" component={Signup}></Route>
+          <Route path="/signup" component={SignupPage}></Route>
 
-          <Route path="/login" component={Login}></Route>
+          <Route path="/login" component={LoginPage}></Route>
 
-          <Route path="/checkout" component={Checkout}></Route>
+          <Route path="/checkout" component={CheckoutPage}></Route>
 
           <Route path="/product/:id" component={ProductPage}></Route>
 

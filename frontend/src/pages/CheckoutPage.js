@@ -1,12 +1,12 @@
 import React from 'react';
-import './Checkout.css';
+import './CheckoutPage.css';
 import CheckoutProduct from '../components/CheckoutProduct';
 import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 
 import Subtotal from '../components/Subtotal';
 
-function Checkout() {
+function CheckoutPage() {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -43,4 +43,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default CheckoutPage;
