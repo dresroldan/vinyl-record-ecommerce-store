@@ -1,4 +1,4 @@
-# Vinyl Record Ecommerce Store
+# Vinyl Record eCommerce Store
 
 ## Description
 
