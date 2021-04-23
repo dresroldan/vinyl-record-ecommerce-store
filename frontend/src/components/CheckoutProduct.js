@@ -5,8 +5,7 @@ import { removeFromCart } from '../actions/cartActions';
 
 function CheckoutProduct({ _id, image, title, price }) {
   
-    // dispatch is our action -- add/remove
-
+  // dispatch is our action -- add/remove
   const dispatch = useDispatch();
 
   const removeFromCartHandler = () => {

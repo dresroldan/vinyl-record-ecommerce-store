@@ -17,7 +17,6 @@ function CheckoutPage() {
         <div>
           {/* passing product props to display item content in checkout basket 
           when adding item to basket this map array method creates a new array and will display onto checkout page */}
-
           {cartItems.map((cartItem) => (
             <CheckoutProduct
               _id={cartItem._id}

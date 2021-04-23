@@ -10,14 +10,6 @@ function Newsletter() {
         <input type="email" placeholder="Enter your email" />
         <button>SIGN UP</button>
       </form>
-
-      {/* <form  className="flex-form">
-      <label for="from">
-        <i className="ion-location"></i>
-      </label>
-      <input type="search" placeholder="Where do you want to go?">
-      <input type="submit" value="Search">
-    </form> */}
     </div>
   );
 }

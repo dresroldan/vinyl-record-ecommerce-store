@@ -25,7 +25,6 @@ function LoginPage({ location, history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     if (
       !username ||
       !password ||
@@ -53,14 +52,12 @@ function LoginPage({ location, history }) {
         {message && <Alert severity="error">{message}</Alert>}
 
         <form>
-          {/* <h5>E-mail</h5> */}
           <input
             type="email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Email"
           />
-          {/* <h5>Password</h5> */}
           <input
             type="password"
             value={password}
@@ -74,13 +71,6 @@ function LoginPage({ location, history }) {
           >
             Sign in
           </button>
-          {/* <button
-            type="submit"
-            onClick={getUser}
-            className="login__signInButton"
-          >
-            get user
-          </button> */}
 
           {/* {data ? <h1>Welcome back {data.username}</h1> : null} */}
         </form>

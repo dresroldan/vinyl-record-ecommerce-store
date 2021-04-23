@@ -1,7 +1,7 @@
 .checkoutProduct {
   display: flex;
- padding: 10px 0px;
- border-bottom: 1px solid lightgray;
+  padding: 10px 0px;
+  border-bottom: 1px solid lightgray;
 }
 
 .checkoutProduct__info {
@@ -14,19 +14,17 @@
   margin-top: 10px;
   font-size: 12px;
   border-radius: 10px;
-  padding: 10px 20px ;
+  padding: 10px 20px;
   cursor: pointer;
   color: black;
   outline: none;
 }
 
 .checkoutProduct__info > button:hover {
-
-    color: #d8d8da;
-    background: black;
-    transition: all 0.2s ease-in-out;
+  color: #d8d8da;
+  background: black;
+  transition: all 0.2s ease-in-out;
 }
-
 
 .checkoutProduct__image {
   width: 180px;

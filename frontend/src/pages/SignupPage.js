@@ -13,7 +13,7 @@ function SignupPage({ location, history }) {
 
   const dispatch = useDispatch();
   const userSignup = useSelector((state) => state.userRegister);
-  const {  error, userInfo } = userSignup;
+  const { error, userInfo } = userSignup;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
@@ -55,17 +55,16 @@ function SignupPage({ location, history }) {
         {error && <Alert severity="error">{error}</Alert>}
 
         <form>
-          {/* <h5>E-mail</h5> */}
           <input
             type="email"
-            // value={signupEmail}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Email"
           />
-          {/* <h5>Password</h5> */}
+
           <input
             type="password"
-            // value={signupPassword}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />

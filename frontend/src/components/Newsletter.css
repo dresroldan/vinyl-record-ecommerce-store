@@ -12,17 +12,12 @@
   align-items: center;
 }
 
-
-
-
 .newsletter > h2 {
   margin-bottom: 15px;
-
 }
 
 .newsletter > p {
   margin-bottom: 15px;
-  
 }
 
 .newsletter form {
@@ -37,7 +32,6 @@
   border-color: #fff;
   border-style: solid;
   margin-right: -4px;
-  /* height: 50px; */
   box-shadow: none;
   outline: 0;
   width: 160px;

@@ -58,7 +58,9 @@ function Footer() {
         <div className="footer__copyright">
           <div className="footer_copywrightwrapper">
             <div className="text-left">© 2021 Andres Roldan</div>
-            <div className="text-right">Terms & Conditions   |   Privacy Policy</div>
+            <div className="text-right">
+              Terms & Conditions | Privacy Policy
+            </div>
           </div>
         </div>
       </div>

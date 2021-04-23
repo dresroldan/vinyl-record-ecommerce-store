@@ -8,30 +8,25 @@
 
 .checkout__ad {
   width: 100%;
-height: auto;
-
+  height: auto;
 }
 
 .checkout__title {
   margin-right: 10px;
   padding: 10px;
-  
+
   font-size: 25px;
 }
 
-.checkout__left{
-
-padding:30px ;
-display: flex;
-flex-direction: column;
+.checkout__left {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .checkout__right {
   align-self: center;
-
- 
 }
-
 
 @media only screen and (min-width: 900px) {
   .checkout__left {
