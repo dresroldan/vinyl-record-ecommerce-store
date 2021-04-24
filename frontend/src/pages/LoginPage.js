@@ -37,6 +37,10 @@ function LoginPage({ location, history }) {
     }
   };
 
+  const register = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="login">
       <Link to="/">
@@ -48,7 +52,7 @@ function LoginPage({ location, history }) {
       </Link>
 
       <div className="login__container">
-        <h1>Sign in </h1>
+        <h1>Sign In </h1>
         {message && <Alert severity="error">{message}</Alert>}
 
         <form>
@@ -79,8 +83,8 @@ function LoginPage({ location, history }) {
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
         </p>
 
-        <Link to="/signup" className="login__signUpButton">
-          Create your discM8 account
+        <Link to="/signup" className="login__registerButton">
+          Create your account
         </Link>
       </div>
     </div>

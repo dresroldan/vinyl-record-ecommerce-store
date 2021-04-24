@@ -7,6 +7,7 @@ import {
 
 // Fetch all products
 router.route('/').get(getProducts);
+// Fetch one product
 router.route('/:id').get(getProductById);
 
 export default router;
