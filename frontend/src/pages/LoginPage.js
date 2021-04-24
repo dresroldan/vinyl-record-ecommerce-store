@@ -37,19 +37,15 @@ function LoginPage({ location, history }) {
     }
   };
 
-  const register = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="login">
-      <Link to="/">
+      {/* <Link to="/">
         <img
           className="login__logo"
           src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
           alt="vinylrecord-logo"
         />
-      </Link>
+      </Link> */}
 
       <div className="login__container">
         <h1>Sign In </h1>

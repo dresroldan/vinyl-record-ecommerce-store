@@ -41,13 +41,13 @@ function SignupPage({ location, history }) {
 
   return (
     <div className="signup">
-      <Link to="/">
+      {/* <Link to="/">
         <img
           className="signup__logo"
           src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
           alt="vinylrecord-logo"
         />
-      </Link>
+      </Link> */}
 
       <div className="signup__container">
         <h1>Create account </h1>

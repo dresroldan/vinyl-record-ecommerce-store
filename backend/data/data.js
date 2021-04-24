@@ -57,6 +57,51 @@ const products = [
   },
 
   {
+    title: 'Ana Mazzotti – Ninguem Vai Me Segurar (LP, Album, RE)',
+    image:
+      'https://furtherrecords.com/wp-content/uploads/2021/04/R-14087798-1567611238-1020.jpeg.jpg',
+
+    description:
+      'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Electronic',
+    price: 19.99,
+    countInStock: 3,
+  },
+  {
+    title: 'Azymuth – Jazz Carnival (12″, RE, RM, 180)',
+    image:
+      'https://furtherrecords.com/wp-content/uploads/2021/04/R-14362645-1573528554-8390.jpeg.jpg',
+
+    description:
+      'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Jazz-funk',
+    price: 19.99,
+    countInStock: 3,
+  },
+  {
+    title:
+      'Various – Alefa Madagascar ! Salegy, Soukous & Soul From The Red Island 1974-1984 (2xLP, Comp)',
+    image:
+      'https://furtherrecords.com/wp-content/uploads/2021/03/R-13910252-1564130024-8033.jpeg-1.jpg',
+    description:
+      'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Soul',
+    price: 19.99,
+    countInStock: 3,
+  },
+  {
+    title: 'Glen Adams – A Beat For You (12″, RE)',
+    image:
+      'https://furtherrecords.com/wp-content/uploads/2021/03/10210745-047089460536309327c760536309327ca161607757760536309327cf.jpg',
+
+    description:
+      'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
+    genre: 'Soul',
+    price: 19.99,
+    countInStock: 3,
+  },
+
+  {
     title: 'Mar de Luz - All On U (12)',
     image:
       'https://i1.sndcdn.com/artworks-98c8BLUm7CIz7vxF-DSWXgQ-t500x500.jpg',
@@ -79,10 +124,9 @@ const products = [
     countInStock: 3,
   },
   {
-    title:
-      'Various – Alefa Madagascar ! Salegy, Soukous & Soul From The Red Island 1974-1984 (2xLP, Comp)',
+    title: 'Voilaaa – On Te L’avait Dit … (2xLP, Album, Gat)',
     image:
-      'https://furtherrecords.com/wp-content/uploads/2021/03/R-13910252-1564130024-8033.jpeg-1.jpg',
+      'https://furtherrecords.com/wp-content/uploads/2021/03/R-7658507-1446126601-5822.jpeg.jpg',
     description:
       'Sed euismod euismod tellus, in commodo est maximus vitae. Nunc vehicula tempor ullamcorper. Proin efficitur orci nec mollis imperdiet. Pellentesque sagittis sodales arcu at sagittis. Duis eros orci, iaculis non sapien a, pretium gravida tortor. Quisque at volutpat diam, sit amet aliquet diam. Mauris purus dolor, venenatis nec egestas in, aliquet id est.',
     genre: 'Soul',

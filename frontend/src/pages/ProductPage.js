@@ -24,19 +24,18 @@ const ProductPage = ({ match }) => {
         <div className="productpage__productinfo">
           <img className="productpage__image" src={product.image} alt="" />
 
-          <div className="productpage__productdetails">
+          <div className="productpage__details">
             <h2 className="productpage__heading">{product.title}</h2>
             <p>{product.description}</p>
             <p className="productpage__price">{product.price}</p>
             <p className="productpage__stock">
               {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
             </p>
+          <button  onClick={addToCartHandler}>Add to cart</button>
           </div>
         </div>
 
-        <div className="productpage__options">
-          <button onClick={addToCartHandler}>Add to cart</button>
-        </div>
+       
       </div>
     </div>
   );
