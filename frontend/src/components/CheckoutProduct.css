@@ -1,11 +1,15 @@
 .checkoutProduct {
-  
   padding: 10px 0px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .checkoutProduct__info {
   padding-left: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .checkoutProduct__info > button {
@@ -27,8 +31,9 @@
 }
 
 .checkoutProduct__image {
-  width: 180px;
+  width: 100px;
   height: auto;
+  margin-right: 25px;
 }
 
 .checkoutProduct__rating {

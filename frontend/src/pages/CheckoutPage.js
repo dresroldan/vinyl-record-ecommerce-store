@@ -37,7 +37,7 @@ function CheckoutPage() {
         }
         alt="record-store-ad"
       />
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

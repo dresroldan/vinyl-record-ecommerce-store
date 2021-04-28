@@ -6,6 +6,7 @@ import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import { listProducts } from '../actions/productActions';
 
+
 function HomePage() {
   const dispatch = useDispatch();
 
@@ -37,12 +38,16 @@ function HomePage() {
 
           <div className="home__product">
             {products.map((product) => (
+            
+
+              
               <Product
                 _id={product._id}
                 title={product.title}
                 price={product.price}
                 image={product.image}
               />
+            
             ))}
           </div>
         </div>
