@@ -4,12 +4,25 @@ import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import { useSelector, useDispatch } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '30ch',
+    },
+  },
+}));
 
 function SignupPage({ location, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
+
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const userSignup = useSelector((state) => state.userRegister);
@@ -54,22 +67,22 @@ function SignupPage({ location, history }) {
         {message && <Alert severity="error">{message}</Alert>}
         {error && <Alert severity="error">{error}</Alert>}
 
-        <form>
-          <input
+        <form className={classes.root}>
+          <TextField
             type="email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Email"
           />
 
-          <input
+          <TextField
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
 
-          <input
+          <TextField
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -77,7 +90,7 @@ function SignupPage({ location, history }) {
           />
 
           <button onClick={submitHandler} className="signup__signUpButton">
-            Create your discM8 account
+            Create
           </button>
         </form>
         <p>

@@ -4,11 +4,24 @@ import { Link } from 'react-router-dom';
 import { login } from '../actions/userActions';
 import { useSelector, useDispatch } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '30ch',
+    },
+  },
+}));
 
 function LoginPage({ location, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
+
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -39,31 +52,27 @@ function LoginPage({ location, history }) {
 
   return (
     <div className="login">
-      {/* <Link to="/">
-        <img
-          className="login__logo"
-          src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
-          alt="vinylrecord-logo"
-        />
-      </Link> */}
-
       <div className="login__container">
         <h1>Sign In </h1>
         {message && <Alert severity="error">{message}</Alert>}
 
-        <form>
-          <input
-            type="email"
+        <form className={classes.root}>
+          <TextField
+            type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter Email"
+            label="Email"
+            required
           />
-          <input
-            type="password"
+
+          <TextField
+            type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter Password"
+            label="Password"
+            required
           />
+
           <button
             type="submit"
             onClick={submitHandler}

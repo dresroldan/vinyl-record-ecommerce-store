@@ -17,7 +17,7 @@
 }
 
 .login__container {
-  width: 300px;
+  width: 350px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@
 .login__container > h1 {
   font-weight: 500;
   margin-bottom: 20px;
+  margin-left: 6px;
 }
 
 .login__container > form > h5 {
