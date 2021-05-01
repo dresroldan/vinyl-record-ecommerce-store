@@ -1,6 +1,9 @@
 .footer {
   background-color: #333;
   color: white;
+  position:relative;
+ bottom:0;
+ left:0;
 }
 
 /* .footer__wrapper {display: flex;

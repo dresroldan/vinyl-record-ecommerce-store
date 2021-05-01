@@ -30,7 +30,7 @@ function Header() {
 
         {userInfo ? (
           <div className="header__nav">
-            <Link to="/logout">
+            <Link to="/">
               <div className="header__option">
                 <span onClick={logoutHandler} className="header__optionLineOne">
                   LOG OUT
