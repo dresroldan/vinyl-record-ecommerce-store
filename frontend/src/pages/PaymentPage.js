@@ -1,26 +1,23 @@
 import React from 'react';
-import './CheckoutPage.css';
-import CheckoutProduct from '../components/CheckoutProduct';
-import { useSelector } from 'react-redux';
-import Footer from '../components/Footer';
-import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../actions/cartActions';
-import Alert from '@material-ui/lab/Alert';
-import { Link } from 'react-router-dom';
-import Subtotal from '../components/Subtotal';
+import { useSelector, useDispatch } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { removeFromCart } from '../actions/cartActions';
+import './PaymentPage.css';
 import Grid from '@material-ui/core/Grid';
+import ShippingPage from './ShippingPage';
 
-function CheckoutPage() {
+function PaymentPage() {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  const address = useSelector((state) => state.cart);
+  const { shippingAddress } = address;
 
   const dispatch = useDispatch();
 
@@ -29,20 +26,37 @@ function CheckoutPage() {
   };
 
   return (
-    <div className="checkout">
+    <div className="payment">
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <h2>Your selection</h2>
-        </Grid>
+        <Grid item xs={6}>
+          <h1>
+            Checkout (<Link to="/checkout">{cartItems.length} items</Link>)
+          </h1>
+          <div className="payment__section">
+            <div className="payment__title">
+              <h3>Delivery Address</h3>
+            </div>
+            <div className="payment__address">
+              <p>{shippingAddress.address}</p>
+              <p>
+                {shippingAddress.city}, {shippingAddress.state}{' '}
+                {shippingAddress.postalCode}
+              </p>
 
-        {/* <Link to="/">Continue Shopping</Link> */}
-        {cartItems.length === 0 ? (
-          <Alert variant="outlined" severity="warning">
-            Your cart is currently empty ---{' '}
-            <Link to="/">Continue Shopping</Link>
-          </Alert>
-        ) : (
-          <Grid item xs={12}>
+              <p>{shippingAddress.country}</p>
+
+              {/* <ShippingPage/> */}
+            </div>
+          </div>
+
+          <div className="payment__section">
+            <div className="payment__title">
+              <h3>Payment Method</h3>
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={6}>
+          <div className="payment__items">
             <Table>
               <TableHead>
                 <TableRow>
@@ -75,21 +89,17 @@ function CheckoutPage() {
                       </div>
                     </TableCell>
                     <TableCell align="right">{cartItem.price}</TableCell>
-                    <TableCell align="right">1</TableCell>
+                    <TableCell align="right">{cartItem.fat}</TableCell>
                     <TableCell align="right">{cartItem.price}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-          </Grid>
-        )}
-        <Grid item xs={12}>
-          <Subtotal />
+          </div>
         </Grid>
       </Grid>
-      <Footer />
     </div>
   );
 }
 
-export default CheckoutPage;
+export default PaymentPage;

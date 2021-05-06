@@ -2,8 +2,10 @@ import React from 'react';
 import './Subtotal.css';
 import CurrencyFormat from 'react-currency-format';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 function Subtotal() {
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const getBasketTotal = (cartItems) =>
@@ -11,26 +13,29 @@ function Subtotal() {
 
   return (
     <div className="subtotal">
-      {/* react component to format number in an input or as a text */}
-      <CurrencyFormat
-        renderText={(value) => (
-          <>
-            <p>
-              Subtotal ({cartItems.length} items): <strong>{value}</strong>
-            </p>
-            <small className="subtotal__gift">
-              <input type="checkbox" /> This order contains a gift
-            </small>
-          </>
-        )}
-        decimalScale={2}
-        value={getBasketTotal(cartItems)}
-        displayType={'text'}
-        thousandSeperator={true}
-        prefix={'$'}
-      />
+      <div className="subtotal__cost">
+        <CurrencyFormat
+          renderText={(value) => (
+            <>
+              <p>
+                Subtotal ({cartItems.length} items): <strong>{value}</strong>
+              </p>
+              <small className="subtotal__gift">
+                Taxes and shipping calculated at checkout
+              </small>
+            </>
+          )}
+          decimalScale={2}
+          value={getBasketTotal(cartItems)}
+          displayType={'text'}
+          thousandSeperator={true}
+          prefix={'$'}
+        />
+      </div>
 
-      <button>PROCEED TO CHECKOUT</button>
+      <div className="subtotal__option">
+        <button onClick={(e) => history.push('/payment')}>CHECKOUT</button>
+      </div>
     </div>
   );
 }

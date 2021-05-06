@@ -69,24 +69,27 @@ function SignupPage({ location, history }) {
 
         <form className={classes.root}>
           <TextField
-            type="email"
+            type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Email"
+            label="Email"
+            required
           />
 
           <TextField
-            type="password"
+            type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            label="Password"
+            required
           />
 
           <TextField
-            type="password"
+            type="text"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm Password"
+            label="Confirm Password"
+            required
           />
 
           <button onClick={submitHandler} className="signup__signUpButton">

@@ -3,6 +3,7 @@ import './ProductPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
+import Grid from '@material-ui/core/Grid';
 
 const ProductPage = ({ match }) => {
   const dispatch = useDispatch();
@@ -20,10 +21,11 @@ const ProductPage = ({ match }) => {
 
   return (
     <div className="productpage">
-      <div className="productpage__container">
-        <div className="productpage__productinfo">
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
           <img className="productpage__image" src={product.image} alt="" />
-
+        </Grid>
+        <Grid item xs={12}>
           <div className="productpage__details">
             <h2 className="productpage__heading">{product.title}</h2>
             <p>{product.description}</p>
@@ -31,12 +33,10 @@ const ProductPage = ({ match }) => {
             <p className="productpage__stock">
               {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
             </p>
-          <button  onClick={addToCartHandler}>Add to cart</button>
+            <button onClick={addToCartHandler}>Add to cart</button>
           </div>
-        </div>
-
-       
-      </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.payment__container {
+  text-align: center;
+  padding: 10px;
+  font-weight: 400px;
+  border-bottom: 1px solid lightgray;
+}
+
+.payment__section {
+  padding: 20px;
+  margin: 0 20px;
+  /* border-bottom: 1px solid lightgray; */
+}

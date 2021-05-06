@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import path from 'path';
 // import userRoutes from './routes/userRoutes.js';
 const LocalStrategy = passportLocal.Strategy;
@@ -34,9 +35,6 @@ app.use(
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
 
 // ---------------------- PASSPORT CONFIG ----------------------------//
 passport.use(
@@ -71,12 +69,9 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-
-
-
 // ROUTES
 app.use('/api/products', productRoutes);
-// app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
