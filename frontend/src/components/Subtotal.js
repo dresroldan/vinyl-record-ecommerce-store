@@ -6,10 +6,15 @@ import { useHistory } from 'react-router';
 
 function Subtotal() {
   const history = useHistory();
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const getBasketTotal = (cartItems) =>
     cartItems?.reduce((amount, item) => item.price + amount, 0);
+
+  const checkoutHandler = () => {
+    history.push('/login?redirect=payment');
+  };
 
   return (
     <div className="subtotal">
@@ -34,7 +39,9 @@ function Subtotal() {
       </div>
 
       <div className="subtotal__option">
-        <button onClick={(e) => history.push('/payment')}>CHECKOUT</button>
+        <button disabled={cartItems.length === 0} onClick={checkoutHandler}>
+          CHECKOUT
+        </button>
       </div>
     </div>
   );

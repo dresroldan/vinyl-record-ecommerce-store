@@ -66,7 +66,7 @@ function LoginPage({ location, history }) {
           />
 
           <TextField
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
@@ -80,8 +80,6 @@ function LoginPage({ location, history }) {
           >
             Sign in
           </button>
-
-          {/* {data ? <h1>Welcome back {data.username}</h1> : null} */}
         </form>
         <p>
           By signing-in you agree to discM8's Conditions of Use & Sale. Please

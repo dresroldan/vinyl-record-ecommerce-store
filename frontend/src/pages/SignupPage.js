@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './SignupPage.css';
-import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import { useSelector, useDispatch } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
@@ -77,7 +76,7 @@ function SignupPage({ location, history }) {
           />
 
           <TextField
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             label="Password"

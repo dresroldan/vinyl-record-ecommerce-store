@@ -1,6 +1,5 @@
 import React from 'react';
 import './CheckoutPage.css';
-import CheckoutProduct from '../components/CheckoutProduct';
 import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
@@ -11,11 +10,8 @@ import Subtotal from '../components/Subtotal';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 function CheckoutPage() {
@@ -60,6 +56,7 @@ function CheckoutPage() {
                         <img
                           className="checkout__image"
                           src={cartItem.image}
+                          alt=""
                         ></img>
                         <div className="checkout__option">
                           <h3 className="checkout__productTitle">

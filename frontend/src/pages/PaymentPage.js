@@ -85,6 +85,7 @@ function PaymentPage({ history }) {
                         <img
                           className="checkout__image"
                           src={cartItem.image}
+                          alt=""
                         ></img>
                         <div className="checkout__option">
                           <h3 className="checkout__productTitle">
