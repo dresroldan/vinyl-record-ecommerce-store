@@ -1,11 +1,27 @@
 // import express from 'express';
-// const router = express.Router();
-// import { authUser, getUserProfile } from '../controllers/userController.js';
-// import { protect } from '../middleware/authMiddleware.js';
+// const userRouter = express.Router();
+// import passportJwt from 'passport-jwt';
+// import JWT from 'jsonwebtoken';
+// import User from './models/userModel.js';
+// // const passportConfig 
 
-// // Fetch all products
-// router.post('/login', authUser);
 
-// router.route('/profile').get(protect, getUserProfile);
+// userRouter.post('/signup', (req, res) => {
+//   const { username, password, isAdmin } = req.body;
 
-// export default router;
+//   User.findOne({ username }, (error, user) => {
+//     if (error) throw error;
+//     if (user) res.send('User Already Exists');
+//     else {
+//       const newUser = new User({
+//         username,
+//         password,
+//         isAdmin,
+//       });
+//       newUser.save((err) => {
+//         if (error) throw error;
+//         else res.send('Account created');
+//       });
+//     }
+//   });
+// });

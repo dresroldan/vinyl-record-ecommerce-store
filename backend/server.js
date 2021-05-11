@@ -5,14 +5,21 @@ import passportLocal from 'passport-local';
 import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import User from './models/userModel.js';
+import Order from './models/orderModel.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
+// import userRouter from './routes/userRoutes.js';
+// import orderRoutes from './routes/orderRoutes.js';
 import path from 'path';
+import passportJwt from 'passport-jwt';
+import JWT from 'jsonwebtoken';
+import { toUnicode } from 'punycode';
+
 // import userRoutes from './routes/userRoutes.js';
 const LocalStrategy = passportLocal.Strategy;
+const JwtStrategy = passportJwt.Strategy;
 
 // MONGO CONNECTION
 dotenv.config();
@@ -37,80 +44,134 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ---------------------- PASSPORT CONFIG ----------------------------//
+
+const signToken = (userID) => {
+  return JWT.sign(
+    {
+      iss: 'NoobCoder',
+      sub: userID,
+    },
+    'NoobCoder',
+    { expiresIn: '1h' }
+  );
+};
+
+const cookieExtractor = (req) => {
+  let token = null;
+  if (req && req.cookies) {
+    token = req.cookies['access_token'];
+  }
+  return token;
+};
+
+// authorization
+passport.use(
+  new JwtStrategy(
+    {
+      jwtFromRequest: cookieExtractor,
+      secretOrKey: 'NoobCoder',
+    },
+    (payload, done) => {
+      User.findById({ _id: payload.sub }, (err, user) => {
+        if (err) return done(err, false);
+        if (user) return done(null, user);
+        else return done(null, false);
+      });
+    }
+  )
+);
+
 passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, (err, user) => {
       if (err) throw err;
       if (!user) return done(null, false);
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (err) throw err;
-        if (result === true) {
-          return done(null, user);
-        } else {
-          return done(null, false);
-        }
-      });
+      user.comparePassword(password, done);
     });
   })
 );
 
-passport.serializeUser((user, cb) => {
-  cb(null, user._id);
-});
-
-passport.deserializeUser((id, cb) => {
-  User.findOne({ _id: id }, (err, user) => {
-    const userInformation = {
-      username: user.username,
-      isAdmin: user.isAdmin,
-      id: user._id,
-    };
-    cb(err, userInformation);
-  });
-});
-
 // ROUTES
 app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
+// app.use('/api/users', userRouter);
+// app.use('/api/orders', orderRoutes);
 
-app.post('/signup', async (req, res) => {
-  const { username, password } = req.body;
+app.post('/signup', (req, res) => {
+  const { username, password, isAdmin } = req.body;
 
-  if (
-    !username ||
-    !password ||
-    typeof username !== 'string' ||
-    typeof password !== 'string'
-  ) {
-    res.status(400);
-  }
-  User.findOne({ username }, async (error, doc) => {
+  User.findOne({ username }, (error, user) => {
     if (error) throw error;
-    if (doc) res.send('User Already Exists');
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(password, 10);
+    if (user) res.send('User Already Exists');
+    else {
       const newUser = new User({
         username,
-        password: hashedPassword,
+        password,
+        isAdmin,
       });
-      await newUser.save();
-      res.send('success');
+      newUser.save((err) => {
+        if (error) throw error;
+        else res.send('Account created');
+      });
     }
   });
 });
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.send('user is logged in');
-});
+app.post(
+  '/login',
+  passport.authenticate('local', { session: false }),
+  (req, res) => {
+    if (req.isAuthenticated()) {
+      const { _id, username, isAdmin } = req.user;
+      const token = signToken(_id);
+      res.cookie('access_token', token, { httpOnly: true, sameSite: true });
+      res.status(200).json({ _id, username, isAdmin, token });
+    }
+  }
+);
 
-app.get('/user', (req, res) => {
-  res.send(req.user);
-});
+app.get(
+  '/logout',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.clearCookie('access_token');
+    // req.logout();
+    res.json({ user: { username: '', isAdmin: '' }, success: true });
+  }
+);
 
-app.get('/logout', (req, res) => {
-  res.send('successfull logout');
-  req.logout();
-});
+app.get(
+  '/authenticated',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { username, isAdmin } = req.user;
+    res
+      .status(200)
+      .json({ isAuthenticated: true, user: { username, isAdmin } });
+  }
+);
+
+app.post(
+  '/orders',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { orderItems } = req.body;
+
+    const order = new Order({
+      orderItems,
+      user: req.user._id,
+    });
+    order.save((err) => {
+      if (err) res.status(500);
+      else {
+        req.user.orders.push(order);
+        req.user.save((err) => {
+          if (err) throw err;
+          else res.send('order created');
+        });
+      }
+    });
+  }
+);
 
 const __dirname = path.resolve();
 

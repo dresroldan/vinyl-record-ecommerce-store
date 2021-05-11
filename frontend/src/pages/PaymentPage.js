@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { Link } from 'react-router-dom';
 import { removeFromCart } from '../actions/cartActions';
 import './PaymentPage.css';
 import Grid from '@material-ui/core/Grid';
-import ShippingPage from './ShippingPage';
+import { createOrder } from '../actions/orderActions';
 
-function PaymentPage() {
+function PaymentPage({ history }) {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const address = useSelector((state) => state.cart);
-  const { shippingAddress } = address;
+  const user = useSelector((state) => state.userLogin);
+  const { userInfo } = user;
 
   const dispatch = useDispatch();
 
@@ -25,37 +24,49 @@ function PaymentPage() {
     dispatch(removeFromCart(_id));
   };
 
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success } = orderCreate;
+
+  const placeOrderHandler = () => {
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
+
   return (
     <div className="payment">
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <h1>
             Checkout (<Link to="/checkout">{cartItems.length} items</Link>)
           </h1>
           <div className="payment__section">
             <div className="payment__title">
               <h3>Delivery Address</h3>
+              <p>{userInfo.username}</p>
+              <p>123 REACT LANE</p>
+              <p>CHICAGO, IL 60622</p>
             </div>
-            <div className="payment__address">
-              <p>{shippingAddress.address}</p>
-              <p>
-                {shippingAddress.city}, {shippingAddress.state}{' '}
-                {shippingAddress.postalCode}
-              </p>
-
-              <p>{shippingAddress.country}</p>
-
-              {/* <ShippingPage/> */}
-            </div>
+            <div className="payment__address"></div>
           </div>
 
           <div className="payment__section">
             <div className="payment__title">
               <h3>Payment Method</h3>
+              <button onClick={placeOrderHandler}>place order</button>
             </div>
           </div>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <div className="payment__items">
             <Table>
               <TableHead>
@@ -89,7 +100,7 @@ function PaymentPage() {
                       </div>
                     </TableCell>
                     <TableCell align="right">{cartItem.price}</TableCell>
-                    <TableCell align="right">{cartItem.fat}</TableCell>
+                    <TableCell align="right">1</TableCell>
                     <TableCell align="right">{cartItem.price}</TableCell>
                   </TableRow>
                 ))}

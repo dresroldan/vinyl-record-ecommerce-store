@@ -4,7 +4,6 @@ import CheckoutPage from './pages/CheckoutPage';
 import ProductPage from './pages/ProductPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import ShippingPage from './pages/ShippingPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PaymentPage from './pages/PaymentPage';
 
@@ -14,8 +13,7 @@ function App() {
       <div className="app">
         <Header />
         <Switch>
-        <Route path="/payment" component={PaymentPage}></Route>
-          <Route path="/shipping" component={ShippingPage}></Route>
+          <Route path="/payment" component={PaymentPage}></Route>
           <Route path="/signup" component={SignupPage}></Route>
           <Route path="/login" component={LoginPage}></Route>
           <Route path="/checkout" component={CheckoutPage}></Route>
