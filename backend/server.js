@@ -1,8 +1,6 @@
 import express from 'express';
-import cors from 'cors';
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import User from './models/userModel.js';
 import Order from './models/orderModel.js';
@@ -15,9 +13,7 @@ import productRoutes from './routes/productRoutes.js';
 import path from 'path';
 import passportJwt from 'passport-jwt';
 import JWT from 'jsonwebtoken';
-import { toUnicode } from 'punycode';
 
-// import userRoutes from './routes/userRoutes.js';
 const LocalStrategy = passportLocal.Strategy;
 const JwtStrategy = passportJwt.Strategy;
 
@@ -166,10 +162,39 @@ app.post(
         req.user.orders.push(order);
         req.user.save((err) => {
           if (err) throw err;
-          else res.send('order created');
+          else res.status(200).json(order);
         });
       }
     });
+  }
+);
+
+app.get(
+  '/orders',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    User.findById({ _id: req.user._id })
+      .populate('orders')
+      .exec((err, document) => {
+        if (err) throw err;
+        else
+          res
+            .status(200)
+            .json({ orders: document.orders, authenticated: true });
+      });
+  }
+);
+
+app.get(
+  '/orders/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Order.findById(req.params.id)
+      .populate('user')
+      .exec((err, orders) => {
+        if (err) throw err;
+        else res.status(200).json({ orders, authenticated: true });
+      });
   }
 );
 

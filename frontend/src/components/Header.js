@@ -22,57 +22,62 @@ function Header() {
   };
 
   return (
-    <AppBar elevation={0} position="sticky" color="inherit">
-      <Toolbar>
-        <Link to="/">
-          <AlbumIcon className="header__logo" fontSize="large" />
-        </Link>
+    <header>
+      <AppBar elevation={0} position="static" color="inherit">
+        <Toolbar>
+          <Link to="/">
+            <AlbumIcon className="header__logo" fontSize="large" />
+          </Link>
 
-        {userInfo ? (
-          <div className="header__nav">
-            <Link to="/">
-              <div className="header__option">
-                <span onClick={logoutHandler} className="header__optionLineOne">
-                  LOG OUT
-                </span>
-              </div>
-            </Link>
+          {userInfo ? (
+            <div className="header__nav">
+              <Link to="/">
+                <div className="header__option">
+                  <span
+                    onClick={logoutHandler}
+                    className="header__optionLineOne"
+                  >
+                    LOG OUT
+                  </span>
+                </div>
+              </Link>
 
-            <Link to="/checkout">
-              <IconButton aria-label="Show cart items" color="inherit">
-                <Badge
-                  badgeContent={cartItems?.length}
-                  fontSize="small"
-                  color="secondary"
-                >
-                  <ShoppingCartSharpIcon fontSize="small" />
-                </Badge>
-              </IconButton>
-            </Link>
-          </div>
-        ) : (
-          <div className="header__nav">
-            <Link to="/login">
-              <div className="header__option">
-                <span className="header__optionLineOne">SIGN IN</span>
-              </div>
-            </Link>
+              <Link to="/checkout">
+                <IconButton aria-label="Show cart items" color="inherit">
+                  <Badge
+                    badgeContent={cartItems?.length}
+                    fontSize="small"
+                    color="secondary"
+                  >
+                    <ShoppingCartSharpIcon fontSize="small" />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </div>
+          ) : (
+            <div className="header__nav">
+              <Link to="/login">
+                <div className="header__option">
+                  <span className="header__optionLineOne">SIGN IN</span>
+                </div>
+              </Link>
 
-            <Link to="/checkout">
-              <IconButton aria-label="Show cart items" color="inherit">
-                <Badge
-                  badgeContent={cartItems?.length}
-                  fontSize="small"
-                  color="secondary"
-                >
-                  <ShoppingCartSharpIcon fontSize="small" />
-                </Badge>
-              </IconButton>
-            </Link>
-          </div>
-        )}
-      </Toolbar>
-    </AppBar>
+              <Link to="/checkout">
+                <IconButton aria-label="Show cart items" color="inherit">
+                  <Badge
+                    badgeContent={cartItems?.length}
+                    fontSize="small"
+                    color="secondary"
+                  >
+                    <ShoppingCartSharpIcon fontSize="small" />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
+    </header>
   );
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import './CheckoutPage.css';
 import { useSelector } from 'react-redux';
-import Footer from '../components/Footer';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
 import Alert from '@material-ui/lab/Alert';
@@ -84,7 +83,6 @@ function CheckoutPage() {
           <Subtotal />
         </Grid>
       </Grid>
-      <Footer />
     </div>
   );
 }

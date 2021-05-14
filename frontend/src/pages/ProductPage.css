@@ -1,14 +1,11 @@
-.productpage__container {
-  /* display: flex;
+.productpage {
+  height: 80vh;
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center; */
-  height: 85vh;
 }
 
 .productpage__productinfo {
   display: grid;
-
   padding: 20px;
   align-items: center;
   grid-template-columns: 1fr;
@@ -17,10 +14,6 @@
 .productpage__image {
   width: 200px;
   height: 200px;
-}
-
-.MuiGrid-root .MuiGrid-item .MuiGrid-grid-xs-12 {
-  text-align: -webkit-center;
 }
 
 .productpage__details {
@@ -58,9 +51,3 @@
   background: black;
   transition: all 0.2s ease-in-out;
 }
-
-/* @media only screen and (min-width: 900px) {
-  .productpage__productinfo  {
-    grid-template-columns: 1fr 1fr ;
-  }
-} */

@@ -1,15 +1,6 @@
 .home {
-  /* display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1800px; */
   position: relative;
   width: 100%;
-}
-
-.home__container {
-  width: -webkit-fill-available;
 }
 
 .home__product {
@@ -20,13 +11,8 @@
 }
 
 .home__productscontainer {
-  max-width: 1560px;
-  min-width: 260px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  margin-bottom: 60px;
-  padding: 60px;
+  margin: 40px 0px 70px 0px;
+  padding: 0px 60px 0px 60px;
 }
 
 .home__sectionheading {

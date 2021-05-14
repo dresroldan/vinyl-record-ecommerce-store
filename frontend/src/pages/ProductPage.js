@@ -21,11 +21,11 @@ const ProductPage = ({ match }) => {
 
   return (
     <div className="productpage">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
+      <Grid container alignItems="center" spacing={3}>
+        <Grid item xs={12} md={6} align="center">
           <img className="productpage__image" src={product.image} alt="" />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <div className="productpage__details">
             <h2 className="productpage__heading">{product.title}</h2>
             <p>{product.description}</p>
