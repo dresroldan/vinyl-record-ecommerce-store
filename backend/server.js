@@ -159,7 +159,6 @@ app.post(
     order.save((err) => {
       if (err) res.status(500);
       else {
-        req.user.orders.push(order);
         req.user.save((err) => {
           if (err) throw err;
           else res.status(200).json(order);
@@ -191,9 +190,9 @@ app.get(
   (req, res) => {
     Order.findById(req.params.id)
       .populate('user')
-      .exec((err, orders) => {
+      .exec((err, order) => {
         if (err) throw err;
-        else res.status(200).json({ orders, authenticated: true });
+        else res.json(order);
       });
   }
 );

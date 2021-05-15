@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PaymentPage from './pages/PaymentPage';
+import OrderPage from './pages/OrderPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <main>
         <Switch>
+          <Route path="/order/:id" component={OrderPage}></Route>
           <Route path="/payment" component={PaymentPage}></Route>
           <Route path="/signup" component={SignupPage}></Route>
           <Route path="/login" component={LoginPage}></Route>

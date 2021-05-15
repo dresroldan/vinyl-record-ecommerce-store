@@ -5,54 +5,31 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Link } from 'react-router-dom';
-import { removeFromCart } from '../actions/cartActions';
 import './PaymentPage.css';
 import Grid from '@material-ui/core/Grid';
-import { createOrder } from '../actions/orderActions';
+import { getOrderDetails } from '../actions/orderActions';
 
-function PaymentPage({ history }) {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-
-  const user = useSelector((state) => state.userLogin);
-  const { userInfo } = user;
+function OrderPage({ match }) {
+  const orderId = match.params.id;
 
   const dispatch = useDispatch();
 
-  const removeFromCartHandler = (_id) => {
-    dispatch(removeFromCart(_id));
-  };
-
-  const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success } = orderCreate;
-
-  const placeOrderHandler = () => {
-    dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
-      })
-    );
-  };
+  const orderDetails = useSelector((state) => state.orderDetails);
+  const { order } = orderDetails;
 
   useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`);
-    }
-    // eslint-disable-next-line
-  }, [history, success]);
+    dispatch(getOrderDetails(orderId));
+  }, []);
 
   return (
     <div className="payment">
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <h2>
-            Checkout (<Link to="/checkout">{cartItems.length} items</Link>)
-          </h2>
+          {/* <h1>Order {order._id}</h1> */}
           <div className="payment__section">
             <div className="payment__title">
               <h3>Delivery Address</h3>
-              <p>{userInfo.username}</p>
+              {/* <p>{userInfo.username}</p> */}
               <p>123 REACT LANE</p>
               <p>CHICAGO, IL 60622</p>
             </div>
@@ -62,7 +39,6 @@ function PaymentPage({ history }) {
           <div className="payment__section">
             <div className="payment__title">
               <h3>Payment Method</h3>
-              <button onClick={placeOrderHandler}>place order</button>
             </div>
           </div>
         </Grid>
@@ -78,33 +54,27 @@ function PaymentPage({ history }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {cartItems.map((cartItem) => (
-                  <TableRow key={cartItem.name}>
+                {/* {order.orderItems.map((orderItem) => (
+                  <TableRow key={orderItem.title}>
                     <TableCell component="th" scope="row">
                       <div className="checkout__product">
                         <img
                           className="checkout__image"
-                          src={cartItem.image}
+                          src={orderItem.image}
                           alt=""
                         ></img>
                         <div className="checkout__option">
                           <h3 className="checkout__productTitle">
-                            {cartItem.title}
+                            {orderItem.title}
                           </h3>
-                          <Link
-                            className="checkout__link"
-                            onClick={() => removeFromCartHandler(cartItem._id)}
-                          >
-                            Remove
-                          </Link>
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell align="right">{cartItem.price}</TableCell>
+                    <TableCell align="right">{orderItem.price}</TableCell>
                     <TableCell align="right">1</TableCell>
-                    <TableCell align="right">{cartItem.price}</TableCell>
+                    <TableCell align="right">{orderItem.price}</TableCell>
                   </TableRow>
-                ))}
+                ))} */}
               </TableBody>
             </Table>
           </div>
@@ -114,4 +84,4 @@ function PaymentPage({ history }) {
   );
 }
 
-export default PaymentPage;
+export default OrderPage;

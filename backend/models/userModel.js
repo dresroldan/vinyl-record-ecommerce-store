@@ -17,12 +17,12 @@ const userSchema = mongoose.Schema({
     default: false,
   },
 
-  orders: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Order',
-    },
-  ],
+  // orders: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Order',
+  //   },
+  // ],
 });
 
 userSchema.pre('save', function (next) {

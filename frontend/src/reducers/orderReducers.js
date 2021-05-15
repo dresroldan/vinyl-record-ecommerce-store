@@ -29,7 +29,10 @@ export const orderCreateReducer = (state = {}, action) => {
       return state;
   }
 };
-export const orderDetailsReducer = (state = { orderItems: [] }, action) => {
+export const orderDetailsReducer = (
+  state = { loading: true, orderItems: [] },
+  action
+) => {
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
       return {
@@ -51,4 +54,3 @@ export const orderDetailsReducer = (state = { orderItems: [] }, action) => {
       return state;
   }
 };
-a;

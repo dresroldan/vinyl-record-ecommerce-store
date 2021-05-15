@@ -10,3 +10,10 @@
   margin: 0 20px;
   /* border-bottom: 1px solid lightgray; */
 }
+
+.payment h2 {
+  text-align: center;
+}
+.payment__title {
+  text-align: center;
+}
