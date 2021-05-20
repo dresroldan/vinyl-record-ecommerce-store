@@ -13,7 +13,7 @@ function Subtotal() {
     cartItems?.reduce((amount, item) => item.price + amount, 0);
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=payment');
+    history.push('/login?redirect=checkout');
   };
 
   return (

@@ -3,6 +3,8 @@ import './Product.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../actions/cartActions';
+import { Grid } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 function Product({ _id, image, title, price }) {
   const productId = _id;
@@ -13,24 +15,35 @@ function Product({ _id, image, title, price }) {
   };
 
   return (
-    <div className="product">
-      <Link to={`/product/${_id}`}>
-        <img src={image} alt="mardeluz-single" />
-      </Link>
-
-      <div className="product__info">
+    <Grid container alignItems="center" spacing={1}>
+      <Grid item xs={12}>
+        {' '}
+        <Link to={`/product/${_id}`}>
+          <img src={image} alt="mardeluz-single" />
+        </Link>
+      </Grid>
+      <Grid item xs={12}>
         <Link href={`/product/${_id}`}>
           <p>{title}</p>
         </Link>
+      </Grid>
+      <Grid item xs={12}>
+        {' '}
+        <small>$</small>
+        <strong>{price}</strong>
+      </Grid>
 
-        <p className="product__price">
-          <small>$</small>
-          <strong>{price}</strong>
-        </p>
-
-        <button onClick={addToCartHandler}>Add to cart</button>
-      </div>
-    </div>
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          color="light"
+          disableElevation
+          onClick={addToCartHandler}
+        >
+          Add to cart
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
 

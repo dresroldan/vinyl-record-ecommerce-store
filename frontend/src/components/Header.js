@@ -42,7 +42,7 @@ function Header() {
                 </div>
               </Link>
 
-              <Link to="/checkout">
+              <Link to="/cart">
                 <IconButton aria-label="Show cart items" color="inherit">
                   <Badge
                     badgeContent={cartItems?.length}
@@ -62,7 +62,7 @@ function Header() {
                 </div>
               </Link>
 
-              <Link to="/checkout">
+              <Link to="/cart">
                 <IconButton aria-label="Show cart items" color="inherit">
                   <Badge
                     badgeContent={cartItems?.length}

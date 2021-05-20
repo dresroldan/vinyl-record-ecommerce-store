@@ -6,7 +6,7 @@ function Footer() {
     <div className="footer">
       <div className="footer__wrapper">
         <div className="footer__about">
-          <ul className="footer__social">
+          {/* <ul className="footer__social">
             <li>
               <a
                 href="https://www.linkedin.com/in/andresroldan23/"
@@ -52,7 +52,7 @@ function Footer() {
                 </svg>
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         <div className="footer__copyright">

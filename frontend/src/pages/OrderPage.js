@@ -5,7 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import './PaymentPage.css';
+// import './PaymentPage.css';
 import Grid from '@material-ui/core/Grid';
 import { getOrderDetails } from '../actions/orderActions';
 

@@ -1,22 +1,30 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import './CartPage.css';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../actions/cartActions';
+import Alert from '@material-ui/lab/Alert';
+import { Link } from 'react-router-dom';
+import Subtotal from '../components/Subtotal';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Link } from 'react-router-dom';
-import { removeFromCart } from '../actions/cartActions';
-import './PaymentPage.css';
 import Grid from '@material-ui/core/Grid';
-import { createOrder } from '../actions/orderActions';
+import { Container, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-function PaymentPage({ history }) {
+const useStyles = makeStyles((theme) => ({
+  cartPage: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+}));
+function CheckoutPage() {
+  const classes = useStyles();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-
-  const user = useSelector((state) => state.userLogin);
-  const { userInfo } = user;
 
   const dispatch = useDispatch();
 
@@ -24,50 +32,21 @@ function PaymentPage({ history }) {
     dispatch(removeFromCart(_id));
   };
 
-  const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success } = orderCreate;
-
-  const placeOrderHandler = () => {
-    dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
-      })
-    );
-  };
-
-  useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`);
-    }
-    // eslint-disable-next-line
-  }, [history, success]);
-
   return (
-    <div className="payment">
+    <Container className={classes.cartPage} maxWidth="md">
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <h2>
-            Checkout (<Link to="/checkout">{cartItems.length} items</Link>)
-          </h2>
-          <div className="payment__section">
-            <div className="payment__title">
-              <h3>Delivery Address</h3>
-              <p>{userInfo.username}</p>
-              <p>123 REACT LANE</p>
-              <p>CHICAGO, IL 60622</p>
-            </div>
-            <div className="payment__address"></div>
-          </div>
-
-          <div className="payment__section">
-            <div className="payment__title">
-              <h3>Payment Method</h3>
-              <button onClick={placeOrderHandler}>place order</button>
-            </div>
-          </div>
+          <Typography variant="h4" align="center">
+            Your selection
+          </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <div className="payment__items">
+
+        {cartItems.length === 0 ? (
+          <Grid item xs={12} align="center">
+            <Link to="/">Continue Shopping</Link>
+          </Grid>
+        ) : (
+          <Grid item xs={12}>
             <Table>
               <TableHead>
                 <TableRow>
@@ -107,11 +86,14 @@ function PaymentPage({ history }) {
                 ))}
               </TableBody>
             </Table>
-          </div>
+          </Grid>
+        )}
+        <Grid item xs={12}>
+          <Subtotal />
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 
-export default PaymentPage;
+export default CheckoutPage;

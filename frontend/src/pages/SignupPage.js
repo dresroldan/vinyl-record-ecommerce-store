@@ -17,7 +17,11 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://www.andresroldan.com/" target="_blank">
+      <Link
+        color="inherit"
+        href="https://www.andresroldan.com/"
+        target="_blank"
+      >
         Andres Roldan
       </Link>{' '}
       {new Date().getFullYear()}
@@ -43,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: 'black',
   },
 }));
 
@@ -143,6 +146,7 @@ export default function SignupPage({ location, history }) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disableElevation
             onClick={submitHandler}
           >
             Sign Up

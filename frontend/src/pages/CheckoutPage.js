@@ -1,90 +1,144 @@
 import React from 'react';
-import './CheckoutPage.css';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../actions/cartActions';
-import Alert from '@material-ui/lab/Alert';
-import { Link } from 'react-router-dom';
-import Subtotal from '../components/Subtotal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import AddressForm from '../components/AddressForm';
+import PaymentForm from '../components/PaymentForm';
+import Review from '../components/ReviewOrder';
 
-function CheckoutPage() {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-
-  const dispatch = useDispatch();
-
-  const removeFromCartHandler = (_id) => {
-    dispatch(removeFromCart(_id));
-  };
-
+function Copyright() {
   return (
-    <div className="checkout">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <h2>Your selection</h2>
-        </Grid>
-
-        {/* <Link to="/">Continue Shopping</Link> */}
-        {cartItems.length === 0 ? (
-          <Alert variant="outlined" severity="warning">
-            Your cart is currently empty ---{' '}
-            <Link to="/">Continue Shopping</Link>
-          </Alert>
-        ) : (
-          <Grid item xs={12}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>PRODUCT</TableCell>
-                  <TableCell align="right">PRICE</TableCell>
-                  <TableCell align="right">QUANTITY</TableCell>
-                  <TableCell align="right">TOTAL</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {cartItems.map((cartItem) => (
-                  <TableRow key={cartItem.name}>
-                    <TableCell component="th" scope="row">
-                      <div className="checkout__product">
-                        <img
-                          className="checkout__image"
-                          src={cartItem.image}
-                          alt=""
-                        ></img>
-                        <div className="checkout__option">
-                          <h3 className="checkout__productTitle">
-                            {cartItem.title}
-                          </h3>
-                          <Link
-                            className="checkout__link"
-                            onClick={() => removeFromCartHandler(cartItem._id)}
-                          >
-                            Remove
-                          </Link>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell align="right">{cartItem.price}</TableCell>
-                    <TableCell align="right">1</TableCell>
-                    <TableCell align="right">{cartItem.price}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Grid>
-        )}
-        <Grid item xs={12}>
-          <Subtotal />
-        </Grid>
-      </Grid>
-    </div>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
   );
 }
 
-export default CheckoutPage;
+const useStyles = makeStyles((theme) => ({
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(3, 0, 5),
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const steps = ['Shipping address', 'Payment details', 'Review your order'];
+
+function getStepContent(step, changeFormValue = null) {
+  switch (step) {
+    case 0:
+      return <AddressForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <Review />;
+    default:
+      throw new Error('Unknown step');
+  }
+}
+
+export default function CheckoutPage(props) {
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
+
+  return (
+    <React.Fragment>
+      <CssBaseline />
+
+      <main className={classes.layout}>
+        <Typography component="h1" variant="h4" align="center">
+          Checkout
+        </Typography>
+        <Stepper activeStep={activeStep} className={classes.stepper}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <React.Fragment>
+          {activeStep === steps.length ? (
+            <React.Fragment>
+              <Typography variant="h5" gutterBottom>
+                Thank you for your order.
+              </Typography>
+              <Typography variant="subtitle1">
+                Your order number is #2001539. We have emailed your order
+                confirmation, and will send you an update when your order has
+                shipped.
+              </Typography>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {getStepContent(activeStep)}
+              <div className={classes.buttons}>
+                {activeStep !== 0 && (
+                  <Button onClick={handleBack} className={classes.button}>
+                    Back
+                  </Button>
+                )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleNext}
+                  className={classes.button}
+                >
+                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                </Button>
+              </div>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+
+        <Copyright />
+      </main>
+    </React.Fragment>
+  );
+}
