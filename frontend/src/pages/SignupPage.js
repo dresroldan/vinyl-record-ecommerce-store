@@ -1,21 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import './SignupPage.css';
 import { register } from '../actions/userActions';
 import { useSelector, useDispatch } from 'react-redux';
-import Alert from '@material-ui/lab/Alert';
+import AlbumIcon from '@material-ui/icons/Album';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.andresroldan.com/" target="_blank">
+        Andres Roldan
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+// CSS STYLING
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '30ch',
-    },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    background: 'black',
   },
 }));
 
-function SignupPage({ location, history }) {
+export default function SignupPage({ location, history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -52,57 +84,74 @@ function SignupPage({ location, history }) {
   };
 
   return (
-    <div className="signup">
-      {/* <Link to="/">
-        <img
-          className="signup__logo"
-          src="https://www.pngitem.com/pimgs/m/12-124076_vinyl-records-png-product-coalition-logo-transparent-png.png"
-          alt="vinylrecord-logo"
-        />
-      </Link> */}
-
-      <div className="signup__container">
-        <h1>Create account </h1>
-        {message && <Alert severity="error">{message}</Alert>}
-        {error && <Alert severity="error">{error}</Alert>}
-
-        <form className={classes.root}>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Link href="/">
+          <AlbumIcon className={classes.avatar} fontSize="large" />
+        </Link>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form className={classes.form} noValidate>
           <TextField
-            type="text"
-            value={username}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
             onChange={(e) => setUsername(e.target.value)}
-            label="Email"
-            required
           />
 
           <TextField
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
             label="Password"
-            required
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <TextField
-            type="text"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            label="Confirm Password"
+            variant="outlined"
+            margin="normal"
             required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <button onClick={submitHandler} className="signup__signUpButton">
-            Create
-          </button>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={submitHandler}
+          >
+            Sign Up
+          </Button>
         </form>
-        <p>
-          By creating an account you agree to discM8's Conditions of Use & Sale.
-          Please see our Privacy Notice, our Cookies Notice and our
-          Interest-Based Ads
-        </p>
       </div>
-    </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   );
 }
-
-export default SignupPage;
