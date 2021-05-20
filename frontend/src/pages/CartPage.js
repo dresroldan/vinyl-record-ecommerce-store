@@ -3,7 +3,6 @@ import './CartPage.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
-import Alert from '@material-ui/lab/Alert';
 import { Link } from 'react-router-dom';
 import Subtotal from '../components/Subtotal';
 import Table from '@material-ui/core/Table';

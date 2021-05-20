@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import CheckoutPage from './pages/CheckoutPage';
+import StickyFooter from './components/StickyFooter'
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
             <Route path="/" component={HomePage}></Route>
           </Switch>
         </main>
-        <Footer />
+        {/* <Footer/> */}
+        <StickyFooter />
       </ThemeProvider>
     </Router>
   );
