@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <header>
-      <AppBar elevation={0} position="static" color="inherit">
+      <AppBar elevation={1} position="static" color="inherit">
         <Toolbar>
           <Link to="/">
             <AlbumIcon className="header__logo" fontSize="large" />

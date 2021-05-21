@@ -153,9 +153,6 @@ export default function SignupPage({ location, history }) {
           </Button>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

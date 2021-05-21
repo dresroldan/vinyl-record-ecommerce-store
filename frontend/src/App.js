@@ -10,25 +10,28 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import CheckoutPage from './pages/CheckoutPage';
-import StickyFooter from './components/StickyFooter'
+import StickyFooter from './components/StickyFooter';
 
 function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <Header />
-        <main>
-          <Switch>
-            <Route path="/order/:id" component={OrderPage}></Route>
-            <Route path="/signup" component={SignupPage}></Route>
-            <Route path="/login" component={LoginPage}></Route>
-            <Route path="/cart" component={CartPage}></Route>
-            <Route path="/checkout" component={CheckoutPage}></Route>
-            <Route path="/product/:id" component={ProductPage}></Route>
-            <Route path="/" component={HomePage}></Route>
-          </Switch>
-        </main>
+<main>
+
+
+        <Switch>
+          <Route path="/order/:id" component={OrderPage}></Route>
+          <Route path="/signup" component={SignupPage}></Route>
+          <Route path="/login" component={LoginPage}></Route>
+          <Route path="/cart" component={CartPage}></Route>
+          <Route path="/checkout" component={CheckoutPage}></Route>
+          <Route path="/product/:id" component={ProductPage}></Route>
+          <Route path="/" component={HomePage}></Route>
+        </Switch>
+
         {/* <Footer/> */}
+        </main>
         <StickyFooter />
       </ThemeProvider>
     </Router>

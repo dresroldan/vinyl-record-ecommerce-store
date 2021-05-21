@@ -10,11 +10,14 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
   },
   image: {
     maxWidth: '250px',
+  },
+  button: {
+    width: '300px',
   },
 }));
 
@@ -57,9 +60,10 @@ const ProductPage = ({ match }) => {
                 {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
               </Typography>
               <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 onClick={addToCartHandler}
+                className={classes.button}
               >
                 Add to cart
               </Button>

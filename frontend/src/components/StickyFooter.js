@@ -6,7 +6,7 @@ import { Grid } from '@material-ui/core';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="#fff">
+    <Typography variant="caption" color="#fff">
       {'Copyright © '}
 
       {'Andres Roldan '}
@@ -40,7 +40,7 @@ export default function StickyFooter() {
             <Copyright />
           </Grid>
           <Grid item>
-            <Typography variant="body2">
+            <Typography variant="caption">
               Terms & Conditions | Privacy Policy
             </Typography>
           </Grid>

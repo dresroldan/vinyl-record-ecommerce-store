@@ -26,7 +26,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 250,
+    width: 270,
+  },
+  hero: {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${"'https://images.unsplash.com/photo-1541667558913-5510fb3c7bd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'"})`,
+    height: '400px',
+    backgroundSize: 'cover',
+    color: '#fff',
   },
 }));
 
@@ -50,6 +57,10 @@ function HomePage() {
         </div>
       </div>
 
+      {/* <Grid container  className={classes.hero}>
+
+</Grid> */}
+
       <Container className={classes.layout}>
         {/* <Grid>
           <Typography variant="h4">Shop</Typography>
@@ -68,26 +79,30 @@ function HomePage() {
           ))}
         </div>
       </Container>
-      <Container className={classes.newsletter}>
-        <Grid container justify="center" align="center">
-          <Grid item xs={12}>
-            <Typography variant="h4" align="center">
-              Join our Newsletter
-            </Typography>
-            <Typography align="center" gutterBottom>
-              New releases, exclusives, features, films and more.
-            </Typography>
-            <Paper component="form" className={classes.form}>
-              <InputBase
-                className={classes.input}
-                placeholder="Enter your email"
-                inputProps={{ 'aria-label': 'search google maps' }}
-              />
-              <Button> Sign Up</Button>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
+
+      <Grid
+        container
+        className={classes.newsletter}
+        justify="center"
+        align="center"
+      >
+        {/* <Grid item xs={12}>
+          <Typography variant="h5" style={{ fontWeight: 600 }} align="center">
+            Join our Newsletter
+          </Typography>
+          <Typography align="center" gutterBottom>
+            New releases, exclusives, features, films and more.
+          </Typography>
+          <Paper component="form" className={classes.form}>
+            <InputBase
+              className={classes.input}
+              placeholder="Enter your email"
+              inputProps={{ 'aria-label': 'search google maps' }}
+            />
+            <Button> Sign Up</Button>
+          </Paper>
+        </Grid> */}
+      </Grid>
     </>
   );
 }

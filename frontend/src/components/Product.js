@@ -3,13 +3,16 @@ import './Product.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../actions/cartActions';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    width: '250px',
+    width: '225px',
+  },
+  button: {
+    width: '100%',
   },
 }));
 
@@ -32,7 +35,7 @@ function Product({ _id, image, title, price }) {
       </Grid>
       <Grid item xs={12}>
         <Link href={`/product/${_id}`}>
-          <p>{title}</p>
+          <Typography variant="subtitle2">{title}</Typography>
         </Link>
       </Grid>
       <Grid item xs={12}>
@@ -43,10 +46,11 @@ function Product({ _id, image, title, price }) {
 
       <Grid item xs={12}>
         <Button
-          variant="contained"
-          color="light"
+          variant="outlined"
+          color="primary"
           disableElevation
           onClick={addToCartHandler}
+          className={classes.button}
         >
           Add to cart
         </Button>

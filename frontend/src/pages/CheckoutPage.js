@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from '../components/AddressForm';
 import PaymentForm from '../components/PaymentForm';
 import Review from '../components/ReviewOrder';
+import CurrencyFormat from 'react-currency-format';
 
 function Copyright() {
   return (
