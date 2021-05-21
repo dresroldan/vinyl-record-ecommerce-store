@@ -11,7 +11,6 @@ import { Button, Grid, InputBase, Paper, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    width: 'auto',
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(8),
   },
@@ -35,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     color: '#fff',
   },
+  heroText: {
+    bottom: '50px',
+    position: 'absolute',
+  },
 }));
 
 function HomePage() {
@@ -51,15 +54,13 @@ function HomePage() {
   return (
     <>
       <div className="home__image">
-        <div className="home__imagetext">
+        <Container className={classes.heroText}>
           <span>Features</span>
-          <h1>Our favorite new releases this week </h1>
-        </div>
+          <Typography variant="h4" style={{ fontWeight: 600 }}>
+            Our favorite new releases this week{' '}
+          </Typography>
+        </Container>
       </div>
-
-      {/* <Grid container  className={classes.hero}>
-
-</Grid> */}
 
       <Container className={classes.layout}>
         {/* <Grid>

@@ -8,9 +8,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  layout: {
-    width: '225px',
-  },
+
   button: {
     width: '100%',
   },
@@ -26,7 +24,7 @@ function Product({ _id, image, title, price }) {
   };
 
   return (
-    <Grid container alignItems="center" className={classes.layout} spacing={1}>
+    <Grid container alignItems="center"  spacing={1}>
       <Grid item xs={12}>
         {' '}
         <Link to={`/product/${_id}`}>

@@ -34,15 +34,10 @@ export default function StickyFooter() {
 
   return (
     <footer className={classes.footer}>
-      <Container>
-        <Grid container justify="space-between" alignItems="center">
+      <Container maxWidth="xl">
+        <Grid container direction="column" alignItems="center">
           <Grid item>
             <Copyright />
-          </Grid>
-          <Grid item>
-            <Typography variant="caption">
-              Terms & Conditions | Privacy Policy
-            </Typography>
           </Grid>
         </Grid>
       </Container>
