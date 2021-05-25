@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Product.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,23 +8,30 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-
   button: {
     width: '100%',
   },
 }));
 
 function Product({ _id, image, title, price }) {
-  const classes = useStyles();
   const productId = _id;
+  const classes = useStyles();
   const dispatch = useDispatch();
+  const [switchButton, setSwitchButton] = useState('ADD TO CART');
 
   const addToCartHandler = () => {
     dispatch(addToCart(productId));
+    handleClick();
   };
 
+  function handleClick() {
+    if (switchButton === 'ADD TO CART') {
+      setSwitchButton('ADDED');
+    }
+  }
+
   return (
-    <Grid container alignItems="center"  spacing={1}>
+    <Grid container alignItems="center" spacing={1}>
       <Grid item xs={12}>
         {' '}
         <Link to={`/product/${_id}`}>
@@ -50,7 +57,7 @@ function Product({ _id, image, title, price }) {
           onClick={addToCartHandler}
           className={classes.button}
         >
-          Add to cart
+          {switchButton}
         </Button>
       </Grid>
     </Grid>

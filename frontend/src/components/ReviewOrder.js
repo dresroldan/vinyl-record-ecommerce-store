@@ -1,6 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart } from '../actions/cartActions';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CurrencyFormat from 'react-currency-format';
 import Typography from '@material-ui/core/Typography';
@@ -9,13 +8,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 
-const products = [
-  { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
-  { name: 'Product 2', desc: 'Another thing', price: '$3.45' },
-  { name: 'Product 3', desc: 'Something else', price: '$6.51' },
-  { name: 'Product 4', desc: 'Best thing of all', price: '$14.11' },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
 const addresses = [
   '1 Material-UI Drive',
   'Reactville',
@@ -44,17 +36,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Review() {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
   const getBasketTotal = (cartItems) =>
     cartItems?.reduce((amount, item) => item.price + amount, 0);
-
-  const removeFromCartHandler = (_id) => {
-    dispatch(removeFromCart(_id));
-  };
 
   return (
     <React.Fragment>
@@ -71,9 +58,7 @@ export default function Review() {
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
-          {/* <Typography variant="subtitle1" className={classes.total}>
-            $34.06
-          </Typography> */}
+
           <CurrencyFormat
             renderText={(value) => (
               <>

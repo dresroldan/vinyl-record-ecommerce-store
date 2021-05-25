@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from 'react';
 import { ThemeProvider } from '@material-ui/core';
-import theme from './theme';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Header from './components/Header';
+import StickyFooter from './components/StickyFooter';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import ProductPage from './pages/ProductPage';
-import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
-import CheckoutPage from './pages/CheckoutPage';
-import StickyFooter from './components/StickyFooter';
+import ProductPage from './pages/ProductPage';
+import SignupPage from './pages/SignupPage';
+import theme from './theme';
 
 function App() {
   return (
@@ -21,8 +22,8 @@ function App() {
             <Route path="/order/:id" component={OrderPage}></Route>
             <Route path="/signup" component={SignupPage}></Route>
             <Route path="/login" component={LoginPage}></Route>
-            <Route path="/cart" component={CartPage}></Route>
             <Route path="/checkout" component={CheckoutPage}></Route>
+            <Route path="/cart" component={CartPage}></Route>
             <Route path="/product/:id" component={ProductPage}></Route>
             <Route path="/" component={HomePage}></Route>
           </Switch>

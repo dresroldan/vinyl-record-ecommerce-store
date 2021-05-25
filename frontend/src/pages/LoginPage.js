@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
-import { useSelector, useDispatch } from 'react-redux';
-import AlbumIcon from '@material-ui/icons/Album';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import AlbumIcon from '@material-ui/icons/Album';
+import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // CSS STYLING
 const useStyles = makeStyles((theme) => ({

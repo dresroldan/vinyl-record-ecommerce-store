@@ -12,8 +12,6 @@ function Header() {
   const dispatch = useDispatch();
   const { cartItems } = cart;
 
-  console.log(cartItems);
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 

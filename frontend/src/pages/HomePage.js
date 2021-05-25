@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './HomePage.css';
-import Product from '../components/Product';
-import Newsletter from '../components/Newsletter';
 import { listProducts } from '../actions/productActions';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Product from '../components/Product';
+import './HomePage.css';
 import Typography from '@material-ui/core/Typography';
-import { Button, Grid, InputBase, Paper, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -63,15 +62,10 @@ function HomePage() {
       </div>
 
       <Container className={classes.layout}>
-        {/* <Grid>
-          <Typography variant="h4">Shop</Typography>
-          <Typography variant="h6" gutterBottom>
-            Collect our newest releases
-          </Typography>
-        </Grid> */}
         <div className="home__product">
           {products.map((product) => (
             <Product
+              key={product._id}
               _id={product._id}
               title={product.title}
               price={product.price}
@@ -86,24 +80,7 @@ function HomePage() {
         className={classes.newsletter}
         justify="center"
         align="center"
-      >
-        {/* <Grid item xs={12}>
-          <Typography variant="h5" style={{ fontWeight: 600 }} align="center">
-            Join our Newsletter
-          </Typography>
-          <Typography align="center" gutterBottom>
-            New releases, exclusives, features, films and more.
-          </Typography>
-          <Paper component="form" className={classes.form}>
-            <InputBase
-              className={classes.input}
-              placeholder="Enter your email"
-              inputProps={{ 'aria-label': 'search google maps' }}
-            />
-            <Button> Sign Up</Button>
-          </Paper>
-        </Grid> */}
-      </Grid>
+      ></Grid>
     </>
   );
 }
