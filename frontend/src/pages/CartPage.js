@@ -1,5 +1,4 @@
 import React from 'react';
-import './CartPage.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
@@ -21,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(3),
   },
   button: { width: '235px' },
+  image: {
+    width: '100px',
+    height: 'auto',
+    paddingRight: '20px',
+  },
 }));
 
 function CheckoutPage() {
@@ -70,18 +74,16 @@ function CheckoutPage() {
               {cartItems.map((cartItem) => (
                 <TableRow key={cartItem.name}>
                   <TableCell component="th" scope="row">
-                    <div className="checkout__product">
+                    <div>
                       <img
-                        className="checkout__image"
+                        className={classes.image}
                         src={cartItem.image}
                         alt=""
                       ></img>
-                      <div className="checkout__option">
-                        <h3 className="checkout__productTitle">
-                          {cartItem.title}
-                        </h3>
+                      <div>
+                        <h3>{cartItem.title}</h3>
+
                         <Link
-                          className="checkout__link"
                           onClick={() => removeFromCartHandler(cartItem._id)}
                         >
                           Remove
@@ -105,7 +107,7 @@ function CheckoutPage() {
                   Subtotal ({cartItems.length} items): <strong>{value}</strong>
                 </Typography>
 
-                <Typography variant="caption" className="subtotal__gift">
+                <Typography variant="caption">
                   Taxes and shipping calculated at checkout
                 </Typography>
               </>
