@@ -1,18 +1,16 @@
 import express from 'express';
+import session from 'express-session';
+import path from 'path';
+import dotenv from 'dotenv';
+import JWT from 'jsonwebtoken';
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import session from 'express-session';
+import passportJwt from 'passport-jwt';
+import cookieParser from 'cookie-parser';
+import connectDB from './config/db.js';
 import User from './models/userModel.js';
 import Order from './models/orderModel.js';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
-import connectDB from './config/db.js';
-import productRoutes from './routes/productRoutes.js';
-// import userRouter from './routes/userRoutes.js';
-// import orderRoutes from './routes/orderRoutes.js';
-import path from 'path';
-import passportJwt from 'passport-jwt';
-import JWT from 'jsonwebtoken';
+import productRouter from './routes/productRoutes.js';
 
 const LocalStrategy = passportLocal.Strategy;
 const JwtStrategy = passportJwt.Strategy;
@@ -60,7 +58,7 @@ const cookieExtractor = (req) => {
   return token;
 };
 
-// authorization
+// AUTHORIZATION
 passport.use(
   new JwtStrategy(
     {
@@ -88,9 +86,9 @@ passport.use(
 );
 
 // ROUTES
-app.use('/api/products', productRoutes);
-// app.use('/api/users', userRouter);
-// app.use('/api/orders', orderRoutes);
+app.use('/api/products', productRouter);
+
+// ---------------------- USER ROUTES AND CONTROLLER ----------------------------//
 
 app.post('/signup', (req, res) => {
   const { username, password, isAdmin } = req.body;
@@ -146,6 +144,7 @@ app.get(
   }
 );
 
+// ---------------------- ORDER ROUTES AND CONTROLLER ----------------------------//
 app.post(
   '/orders',
   passport.authenticate('jwt', { session: false }),

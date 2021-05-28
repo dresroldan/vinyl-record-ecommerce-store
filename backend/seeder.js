@@ -32,6 +32,7 @@ const importData = async () => {
 
 const destroyData = async () => {
   try {
+    a;
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
