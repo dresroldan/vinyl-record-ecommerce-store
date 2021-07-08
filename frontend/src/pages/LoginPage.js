@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginPage({ location, history }) {
+const LoginPage = ({ location, history }) => {
   const classes = useStyles();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -128,4 +128,6 @@ export default function LoginPage({ location, history }) {
       </div>
     </Container>
   );
-}
+};
+
+export default LoginPage;

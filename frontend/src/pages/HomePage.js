@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HomePage() {
+const HomePage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -83,6 +83,6 @@ function HomePage() {
       ></Grid>
     </>
   );
-}
+};
 
 export default HomePage;

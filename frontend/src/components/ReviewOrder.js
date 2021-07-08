@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Review() {
+const Review = () => {
   const classes = useStyles();
 
   const cart = useSelector((state) => state.cart);
@@ -103,4 +103,6 @@ export default function Review() {
       </Grid>
     </React.Fragment>
   );
-}
+};
+
+export default Review;

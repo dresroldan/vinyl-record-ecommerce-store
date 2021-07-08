@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, changeFormValue = null) {
+const getStepContent = (step, changeFormValue = null) => {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -60,9 +60,9 @@ function getStepContent(step, changeFormValue = null) {
     default:
       throw new Error('Unknown step');
   }
-}
+};
 
-export default function CheckoutPage(props) {
+const CheckoutPage = (props) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -125,4 +125,6 @@ export default function CheckoutPage(props) {
       </main>
     </React.Fragment>
   );
-}
+};
+
+export default CheckoutPage;

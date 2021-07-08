@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignupPage({ location, history }) {
+const SignupPage = ({ location, history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -137,4 +137,6 @@ export default function SignupPage({ location, history }) {
       </div>
     </Container>
   );
-}
+};
+
+export default SignupPage;

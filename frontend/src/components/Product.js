@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Product.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../actions/cartActions';
 import { Grid, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import './Product.css';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -13,10 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Product({ _id, image, title, price }) {
+const Product = ({ _id, image, title, price }) => {
   const productId = _id;
   const classes = useStyles();
   const dispatch = useDispatch();
+
   const [switchButton, setSwitchButton] = useState('ADD TO CART');
 
   const addToCartHandler = () => {
@@ -62,6 +63,6 @@ function Product({ _id, image, title, price }) {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default Product;

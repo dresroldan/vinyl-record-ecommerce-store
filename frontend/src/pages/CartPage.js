@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CheckoutPage() {
+const CheckoutPage = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -133,6 +133,6 @@ function CheckoutPage() {
       </Grid>
     </Container>
   );
-}
+};
 
 export default CheckoutPage;

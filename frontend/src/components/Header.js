@@ -4,16 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import AlbumIcon from '@material-ui/icons/Album';
 import { AppBar, Toolbar, Badge, IconButton } from '@material-ui/core/';
 import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
-import './Header.css';
 import { logout } from '../actions/userActions';
+import './Header.css';
 
-function Header() {
+const Header = () => {
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
   const { cartItems } = cart;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -21,7 +22,7 @@ function Header() {
 
   return (
     <header>
-      <AppBar elevation={1} position="static" color="inherit">
+      <AppBar elevation={0} position="static" color="inherit">
         <Toolbar>
           <Link to="/">
             <AlbumIcon className="header__logo" fontSize="large" />
@@ -77,6 +78,6 @@ function Header() {
       </AppBar>
     </header>
   );
-}
+};
 
 export default Header;

@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-export default function AddressForm() {
+const AddressForm = () => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -21,7 +21,6 @@ export default function AddressForm() {
             fullWidth
             autoComplete="given-name"
             value="John"
-            // onChange={(e) => changeAddressValue('firstname', e.target.value)}
             variant="outlined"
           />
         </Grid>
@@ -35,7 +34,6 @@ export default function AddressForm() {
             autoComplete="family-name"
             value="Smith"
             variant="outlined"
-            // onChange={(e) => changeAddressValue('lastname', e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -47,19 +45,9 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line1"
             value="1 Material-UI Drive"
-            // onChange={(e) => changeAddressValue('address', e.target.value)}
             variant="outlined"
           />
         </Grid>
-        {/* <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            // label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-          />
-        </Grid> */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -70,7 +58,6 @@ export default function AddressForm() {
             autoComplete="shipping address-level2"
             value="Chicago"
             variant="outlined"
-            // onChange={(e) => changeAddressValue('city', e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -81,7 +68,6 @@ export default function AddressForm() {
             fullWidth
             value="IL"
             variant="outlined"
-            // onChange={(e) => changeAddressValue('state', e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -94,7 +80,6 @@ export default function AddressForm() {
             autoComplete="shipping postal-code"
             value="123456"
             variant="outlined"
-            // onChange={(e) => changeAddressValue('zip', e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -107,7 +92,6 @@ export default function AddressForm() {
             autoComplete="shipping country"
             value="USA"
             variant="outlined"
-            // onChange={(e) => changeAddressValue('country', e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -121,4 +105,6 @@ export default function AddressForm() {
       </Grid>
     </React.Fragment>
   );
-}
+};
+
+export default AddressForm;

@@ -12,7 +12,7 @@ import ProductPage from './pages/ProductPage';
 import SignupPage from './pages/SignupPage';
 import theme from './theme';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -32,6 +32,6 @@ function App() {
       </ThemeProvider>
     </Router>
   );
-}
+};
 
 export default App;

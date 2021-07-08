@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Grid } from '@material-ui/core';
 
-function Copyright() {
+const Copyright = () => {
   return (
     <Typography variant="caption" color="#fff">
       {'Copyright © '}
@@ -15,7 +15,7 @@ function Copyright() {
       {'.'}
     </Typography>
   );
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StickyFooter() {
+const StickyFooter = () => {
   const classes = useStyles();
 
   return (
@@ -43,4 +43,5 @@ export default function StickyFooter() {
       </Container>
     </footer>
   );
-}
+};
+export default StickyFooter;

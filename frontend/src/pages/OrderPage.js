@@ -1,6 +1,6 @@
 import React from 'react';
 
-function OrderPage() {
+const OrderPage = () => {
   return <div className="payment"></div>;
 }
 
