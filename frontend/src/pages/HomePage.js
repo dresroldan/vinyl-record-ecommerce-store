@@ -55,7 +55,7 @@ const HomePage = () => {
       <div className="home__image">
         <Container className={classes.heroText}>
           <span>Features</span>
-          <Typography variant="h4" style={{ fontWeight: 600 }}>
+          <Typography variant="h4">
             Our favorite new releases this week{' '}
           </Typography>
         </Container>
