@@ -1,66 +1,50 @@
-.home {
-  position: relative;
-  width: 100%;
-}
-
-.home__product {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  justify-items: center;
-}
-
-.home__productscontainer {
-  margin: 40px 0px 70px 0px;
-  padding: 0px 60px 0px 60px;
-}
-
-.home__sectionheading {
-  margin-bottom: 20px;
-}
-
-.home__sectionheading > h3 {
-  font-size: 25px;
-  margin-bottom: 3px;
-}
-
-.home__sectionheading > p {
-  font-size: 13px;
-}
-
-.home__image {
+.hero {
   height: 400px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('https://images.unsplash.com/photo-1541667558913-5510fb3c7bd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
-
-  color: white;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  color: #fff;
 }
 
-.home__imagetext {
-  text-align: left;
+.hero-text {
   position: absolute;
+  bottom: 50px;
+}
 
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: white;
-  bottom: 30px;
-  padding-left: 25px;
+.product-grid {
+  display: grid;
+  justify-items: center;
+  padding: 75px 25px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.newsletter {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('https://res.cloudinary.com/dzrk9qfvp/image/upload/v1616077591/MOCK_AD_pbhjv1.png');
+  background-size: cover;
+  height: 275px;
 }
 
 /* MEDIA QUERIES */
 
+@media only screen and (min-width: 768px) {
+  .product-grid {
+    margin: 0 50px;
+  }
+}
+
 @media only screen and (min-width: 900px) {
-  .home__image {
+  .hero {
     height: 600px;
   }
 }
 
 @media only screen and (min-width: 900px) {
-  .home__product {
+  .product-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }

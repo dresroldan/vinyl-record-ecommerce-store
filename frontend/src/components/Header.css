@@ -1,42 +1,31 @@
-.MuiToolbar-regular {
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  padding: 25px;
 }
 
-.header__optionLineOne {
-  font-size: 13px;
-}
-
-.header__optionBasket {
-  color: black;
-}
-
-.header__nav {
+.nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.header__option {
+.nav-item {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
-  color: black;
 }
 
-.header__nav > a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.header__optionLineOne:hover {
+.nav-link:hover {
   color: lightgray;
   transition: all 0.2s ease-in-out;
 }
 
 .MuiSvgIcon-root {
-  color: black;
+  color: #000;
 }
 
 .MuiSvgIcon-root:hover {

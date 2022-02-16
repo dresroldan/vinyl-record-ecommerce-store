@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import AlbumIcon from '@material-ui/icons/Album';
-import { AppBar, Toolbar, Badge, IconButton } from '@material-ui/core/';
-import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 import { logout } from '../actions/userActions';
-import './Header.css';
+import { Badge, IconButton } from '@material-ui/core/';
+import AlbumIcon from '@material-ui/icons/Album';
+import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
+import './header.css';
 
 const Header = () => {
   const cart = useSelector((state) => state.cart);
@@ -22,60 +22,58 @@ const Header = () => {
 
   return (
     <header>
-      <AppBar elevation={0} position="static" color="inherit">
-        <Toolbar>
+      <Link to="/">
+        <div className="logo">
+          <AlbumIcon fontSize="large" />
+        </div>
+      </Link>
+
+      {/* Ternarary operator used to check if user is logged in */}
+      {/* If user is logged in the header will display LOG OUT otherwise the header will display SIGN IN*/}
+
+      {userInfo ? (
+        <div className="nav">
           <Link to="/">
-            <AlbumIcon className="header__logo" fontSize="large" />
+            <div className="nav-item">
+              <span onClick={logoutHandler} className="nav-link">
+                LOG OUT
+              </span>
+            </div>
           </Link>
 
-          {userInfo ? (
-            <div className="header__nav">
-              <Link to="/">
-                <div className="header__option">
-                  <span
-                    onClick={logoutHandler}
-                    className="header__optionLineOne"
-                  >
-                    LOG OUT
-                  </span>
-                </div>
-              </Link>
-
-              <Link to="/cart">
-                <IconButton aria-label="Show cart items" color="inherit">
-                  <Badge
-                    badgeContent={cartItems?.length}
-                    fontSize="small"
-                    color="secondary"
-                  >
-                    <ShoppingCartSharpIcon fontSize="small" />
-                  </Badge>
-                </IconButton>
-              </Link>
+          <Link to="/cart">
+            <IconButton>
+              <Badge
+                badgeContent={cartItems?.length}
+                fontSize="small"
+                color="secondary"
+              >
+                <ShoppingCartSharpIcon />
+              </Badge>
+            </IconButton>
+          </Link>
+        </div>
+      ) : (
+        <div className="nav">
+          <Link to="/login">
+            <div className="nav-item">
+              <span className="nav-link">SIGN IN</span>
             </div>
-          ) : (
-            <div className="header__nav">
-              <Link to="/login">
-                <div className="header__option">
-                  <span className="header__optionLineOne">SIGN IN</span>
-                </div>
-              </Link>
+          </Link>
 
-              <Link to="/cart">
-                <IconButton aria-label="Show cart items" color="inherit">
-                  <Badge
-                    badgeContent={cartItems?.length}
-                    fontSize="small"
-                    color="secondary"
-                  >
-                    <ShoppingCartSharpIcon fontSize="small" />
-                  </Badge>
-                </IconButton>
-              </Link>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
+          <Link to="/cart">
+            <IconButton>
+              <Badge
+                badgeContent={cartItems?.length}
+                fontSize="small"
+                color="secondary"
+              >
+                <ShoppingCartSharpIcon />
+              </Badge>
+            </IconButton>
+          </Link>
+        </div>
+      )}
     </header>
   );
 };

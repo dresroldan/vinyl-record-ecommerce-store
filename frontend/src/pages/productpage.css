@@ -1,0 +1,14 @@
+.product-container {
+  padding: 90px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-description {
+  padding: 50px 50px;
+}
