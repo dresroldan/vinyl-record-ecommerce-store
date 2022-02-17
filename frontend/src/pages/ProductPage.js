@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../actions/cartActions';
 import { listProductDetails } from '../actions/productActions';
 import Button from '@material-ui/core/Button';
-import './productpage.css';
+import './Productpage.css';
 
 const ProductPage = ({ match }) => {
   const dispatch = useDispatch();

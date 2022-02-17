@@ -5,7 +5,7 @@ import { addToCart } from '../actions/cartActions';
 import { Grid, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import './product.css';
+import './Product.css';
 
 const useStyles = makeStyles((theme) => ({
   button: {
