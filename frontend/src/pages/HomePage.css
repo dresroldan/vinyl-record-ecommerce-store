@@ -11,7 +11,12 @@
 
 .hero-text {
   position: absolute;
-  bottom: 50px;
+  bottom: 85px;
+  left: 40px;
+}
+
+.hero-text > h2 {
+  font-size: 35px;
 }
 
 .product-grid {

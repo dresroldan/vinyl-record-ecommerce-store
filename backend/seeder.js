@@ -10,6 +10,8 @@ dotenv.config();
 
 connectDB();
 
+// Seeder file used to add products to mongo database 
+
 const importData = async () => {
   try {
     await Order.deleteMany();

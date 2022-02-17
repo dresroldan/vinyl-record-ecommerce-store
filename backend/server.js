@@ -90,6 +90,7 @@ app.use('/api/products', productRouter);
 
 // ---------------------- USER ROUTES AND CONTROLLER ----------------------------//
 
+// When a user signs up
 app.post('/signup', (req, res) => {
   const { username, password, isAdmin } = req.body;
 
@@ -110,6 +111,7 @@ app.post('/signup', (req, res) => {
   });
 });
 
+// When a user logs in. passport is used to authenticate the user
 app.post(
   '/login',
   passport.authenticate('local', { session: false }),
@@ -123,6 +125,7 @@ app.post(
   }
 );
 
+// When a user log out
 app.get(
   '/logout',
   passport.authenticate('jwt', { session: false }),
@@ -133,6 +136,7 @@ app.get(
   }
 );
 
+// Check to see if the user is authenticated
 app.get(
   '/authenticated',
   passport.authenticate('jwt', { session: false }),
